@@ -68,16 +68,45 @@ button:hover {
     transform: scale(1.05);
 }
 
-.ticket {
-    margin-top: 30px;
-    padding: 20px;
-    border: 2px dashed rgba(255,255,255,0.6);
-    border-radius: 18px;
-}
-
 #status {
     font-size: 18px;
     margin-top: 15px;
+}
+
+.ticket {
+    margin-top: 35px;
+    padding: 25px 20px;
+    background: white;
+    color: #071952;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+}
+
+.ticket-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 24px;
+}
+
+.ticket-line {
+    border-top: 2px dashed #071952;
+    margin: 20px 0;
+}
+
+.ticket h2 {
+    font-size: 28px;
+    margin: 10px 0;
+}
+
+.ticket-match {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.ticket-note {
+    opacity: 0.7;
+    margin-bottom: 0;
 }
 </style>
 
@@ -110,8 +139,27 @@ button:hover {
 </div>
 
 <div class="ticket">
-<h2>🏆 جوازك</h2>
-<p>هذا الجواز هو تذكرتك لموعد الإياب.</p>
+
+<div class="ticket-top">
+<span>🇰🇼</span>
+<strong>جواز الإياب</strong>
+<span>🎫</span>
+</div>
+
+<div class="ticket-line"></div>
+
+<h2>🏆 تذكرتك</h2>
+
+<p class="ticket-match">
+الكويت 🇰🇼 × روسيا 🇷🇺
+</p>
+
+<p>🕘 9:00 مساءً</p>
+
+<p class="ticket-note">
+نتمنى لك تجربة لا تُنسى ❤️
+</p>
+
 </div>
 
 </div>
