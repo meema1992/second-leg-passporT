@@ -1,28 +1,129 @@
 <!DOCTYPE html>
+
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>جواز الإياب</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #071952, #0B666A);
+    color: white;
+    text-align: center;
+    min-height: 100vh;
+    padding: 40px 20px;
+}
+
+.container {
+    max-width: 600px;
+    margin: auto;
+}
+
+h1 {
+    font-size: 42px;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    font-size: 20px;
+    opacity: 0.9;
+}
+
+.card {
+    background: rgba(255,255,255,0.12);
+    border-radius: 25px;
+    padding: 30px 20px;
+    margin-top: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+}
+
+.match {
+    font-size: 28px;
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+.info {
+    font-size: 19px;
+    margin: 10px 0;
+}
+
+button {
+    background: white;
+    color: #071952;
+    border: none;
+    border-radius: 15px;
+    padding: 15px 30px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+
+.ticket {
+    margin-top: 30px;
+    padding: 20px;
+    border: 2px dashed rgba(255,255,255,0.6);
+    border-radius: 18px;
+}
+
+#status {
+    font-size: 18px;
+    margin-top: 15px;
+}
+</style>
+
 </head>
 
 <body>
+
+<div class="container">
+
 <h1>🎫 جواز الإياب</h1>
+
+<p class="subtitle">رحلة جديدة... وموعد جديد مع الانتصار 🇰🇼</p>
+
+<div class="card">
 
 <h2>⚽ مباراة الإياب</h2>
 
-<p>🇰🇼 الكويت × روسيا 🇷🇺</p>
-<p>🕘 9:00 مساءً</p>
+<div class="match">
+🇰🇼 الكويت × روسيا 🇷🇺
+</div>
 
-<button onclick="alert('تم تسجيل حضورك! 🎫')">
+<div class="info">🕘 9:00 مساءً</div>
+
+<button onclick="registerAttendance()">
 🎟️ سجّل حضورك
 </button>
 
-<hr>
+<div id="status">
+لم تسجل أي حضور حتى الآن.
+</div>
 
+<div class="ticket">
 <h2>🏆 جوازك</h2>
+<p>هذا الجواز هو تذكرتك لموعد الإياب.</p>
+</div>
 
-<p>لم تسجل أي حضور حتى الآن.</p>
+</div>
+
+</div>
+
+<script>
+function registerAttendance() {
+    document.getElementById("status").innerHTML =
+    "✅ تم تسجيل حضورك!<br>🇰🇼 ننتظرك في المدرجات!";
+}
+</script>
 
 </body>
 </html>
