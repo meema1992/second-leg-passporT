@@ -1,6 +1,7 @@
+```html
 <!DOCTYPE html>
-
 <html lang="ar" dir="rtl">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -52,6 +53,18 @@ h1 {
     margin: 10px 0;
 }
 
+input {
+    width: 80%;
+    max-width: 400px;
+    box-sizing: border-box;
+    padding: 14px;
+    border: none;
+    border-radius: 12px;
+    font-size: 17px;
+    text-align: center;
+    margin-top: 15px;
+}
+
 button {
     background: white;
     color: #071952;
@@ -68,9 +81,20 @@ button:hover {
     transform: scale(1.05);
 }
 
+button:disabled {
+    opacity: 0.6;
+    cursor: wait;
+}
+
 #status {
     font-size: 18px;
     margin-top: 15px;
+}
+
+#counter {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 20px;
 }
 
 .ticket {
@@ -118,7 +142,9 @@ button:hover {
 
 <h1>🎫 جواز الإياب</h1>
 
-<p class="subtitle">رحلة جديدة... وموعد جديد مع الانتصار 🇰🇼</p>
+<p class="subtitle">
+رحلة جديدة... وموعد جديد مع الانتصار 🇰🇼
+</p>
 
 <div class="card">
 
@@ -128,14 +154,29 @@ button:hover {
 🇰🇼 الكويت × روسيا 🇷🇺
 </div>
 
-<div class="info">🕘 9:00 مساءً</div>
+<div class="info">
+🕘 9:00 مساءً
+</div>
 
-<button onclick="registerAttendance()">
+<input
+    type="text"
+    id="name"
+    placeholder="اكتب اسمك هنا"
+    maxlength="50"
+>
+
+<br>
+
+<button id="registerButton" onclick="registerAttendance()">
 🎟️ سجّل حضورك
 </button>
 
 <div id="status">
 لم تسجل أي حضور حتى الآن.
+</div>
+
+<div id="counter">
+👥 عدد المسجلين: ...
 </div>
 
 <div class="ticket">
@@ -166,12 +207,132 @@ button:hover {
 
 </div>
 
-<script>
-function registerAttendance() {
-    document.getElementById("status").innerHTML =
-    "✅ تم تسجيل حضورك!<br>🇰🇼 ننتظرك في المدرجات!";
+
+<script type="module">
+
+import { initializeApp } from
+"https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+
+import {
+    getFirestore,
+    collection,
+    addDoc,
+    serverTimestamp,
+    getCountFromServer
+} from
+"https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
+
+
+const firebaseConfig = {
+    apiKey: "AIzaSyAXCJeK9_FAd6lR0ctfdm_kcaVI-ys52dw",
+    authDomain: "return-ticket.firebaseapp.com",
+    projectId: "return-ticket",
+    storageBucket: "return-ticket.firebasestorage.app",
+    messagingSenderId: "714749786440",
+    appId: "1:714749786440:web:8a554f291bba83acdf5b7d",
+    measurementId: "G-HL7MCWQQZS"
+};
+
+
+const app = initializeApp(firebaseConfig);
+
+const db = getFirestore(app);
+
+
+async function updateCounter() {
+
+    try {
+
+        const participantsRef =
+            collection(db, "participants");
+
+        const snapshot =
+            await getCountFromServer(participantsRef);
+
+        document.getElementById("counter").innerText =
+            "👥 عدد المسجلين: " +
+            snapshot.data().count;
+
+    } catch (error) {
+
+        console.error(error);
+
+        document.getElementById("counter").innerText =
+            "👥 عدد المسجلين: غير متاح حاليًا";
+    }
 }
+
+
+window.registerAttendance = async function() {
+
+    const nameInput =
+        document.getElementById("name");
+
+    const button =
+        document.getElementById("registerButton");
+
+    const status =
+        document.getElementById("status");
+
+    const name =
+        nameInput.value.trim();
+
+
+    if (!name) {
+
+        status.innerHTML =
+            "⚠️ اكتبي اسمك أولًا ❤️";
+
+        return;
+    }
+
+
+    button.disabled = true;
+
+    status.innerHTML =
+        "⏳ جارٍ تسجيل حضورك...";
+
+
+    try {
+
+        await addDoc(
+            collection(db, "participants"),
+            {
+                name: name,
+                createdAt: serverTimestamp()
+            }
+        );
+
+
+        status.innerHTML =
+            "✅ تم تسجيل حضورك يا " +
+            name +
+            "!<br>🇰🇼 ننتظرك في المدرجات!";
+
+
+        nameInput.value = "";
+
+        await updateCounter();
+
+
+    } catch (error) {
+
+        console.error(error);
+
+        status.innerHTML =
+            "❌ ما قدرنا نسجل حضورك الآن.<br>حاولي مرة ثانية.";
+
+    } finally {
+
+        button.disabled = false;
+    }
+};
+
+
+updateCounter();
+
 </script>
 
 </body>
 </html>
+```
