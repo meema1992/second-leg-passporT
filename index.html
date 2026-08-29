@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 
@@ -30,7 +29,7 @@ body {
     overflow-x: hidden;
 }
 
-/* ================= HERO ================= */
+/* HERO */
 
 .hero {
     position: relative;
@@ -106,9 +105,14 @@ body {
     font-size: 19px;
     font-weight: 900;
     box-shadow: 0 12px 40px rgba(0,0,0,0.45);
+    transition: 0.3s;
 }
 
-/* ================= NEWS ================= */
+.hero-button:hover {
+    transform: translateY(-4px) scale(1.04);
+}
+
+/* NEWS */
 
 .news-bar {
     overflow: hidden;
@@ -126,7 +130,7 @@ body {
     animation: newsMove 18s linear infinite;
 }
 
-/* ================= MAIN ================= */
+/* MAIN */
 
 .container {
     width: min(1050px, 92%);
@@ -155,7 +159,7 @@ section {
     font-size: 17px;
 }
 
-/* ================= MATCH ================= */
+/* MATCH */
 
 .match-card {
     position: relative;
@@ -208,7 +212,7 @@ section {
     color: rgba(255,255,255,0.55);
 }
 
-/* ================= REGISTRATION ================= */
+/* REGISTRATION */
 
 .registration {
     padding: 50px 25px;
@@ -284,7 +288,7 @@ input:focus {
     font-weight: bold;
 }
 
-/* ================= MEDIA ================= */
+/* MEDIA */
 
 .media-box {
     padding: 40px 25px;
@@ -303,7 +307,7 @@ input:focus {
     line-height: 2;
 }
 
-/* ================= FOOTER ================= */
+/* FOOTER */
 
 footer {
     padding: 45px 20px;
@@ -311,67 +315,42 @@ footer {
     color: rgba(255,255,255,0.45);
 }
 
-/* ================================================= */
-/* ================= PASSPORT MODAL ================ */
-/* ================================================= */
+/* ================================= */
+/* PASSPORT POPUP */
+/* ================================= */
 
 .passport-overlay {
-
     display: none;
-
     position: fixed;
-
     inset: 0;
-
     z-index: 9999;
-
-    background:
-        rgba(1,5,15,0.88);
-
+    background: rgba(1,5,15,0.88);
     backdrop-filter: blur(14px);
-
     align-items: center;
-
     justify-content: center;
-
     padding: 20px;
-
 }
 
 .passport-overlay.show {
-
     display: flex;
-
     animation: overlayIn 0.35s ease;
-
 }
 
 .passport-window {
-
     position: relative;
-
     width: min(650px, 96vw);
-
     max-height: 94vh;
-
     overflow-y: auto;
-
     animation: passportIn 0.65s cubic-bezier(.2,.8,.2,1);
-
 }
 
-/* ================= GOLD FRAME ================= */
+/* GOLD FRAME */
 
 .passport-card {
-
     position: relative;
-
     padding: 7px;
-
     border-radius: 32px;
-
     background:
-
         linear-gradient(
             135deg,
             #fff0a0,
@@ -380,288 +359,176 @@ footer {
             #8c6510,
             #e8c34f
         );
-
     box-shadow:
-
         0 35px 100px rgba(0,0,0,0.7),
-
         0 0 60px rgba(212,175,55,0.25);
-
 }
 
-/* ================= INNER PASSPORT ================= */
+/* INNER */
 
 .passport-inner {
-
     position: relative;
-
     overflow: hidden;
-
     border-radius: 25px;
-
     padding: 38px 30px;
-
     background:
-
         radial-gradient(
             circle at 15% 10%,
             rgba(212,175,55,0.15),
             transparent 28%
         ),
-
         radial-gradient(
             circle at 90% 90%,
             rgba(212,175,55,0.08),
             transparent 25%
         ),
-
         linear-gradient(
             145deg,
             #0a2147,
             #020916 65%,
             #071936
         );
-
     border: 1px solid rgba(255,255,255,0.12);
-
 }
 
-/* Decorative lines */
-
 .passport-inner::before {
-
     content: "";
-
     position: absolute;
-
     inset: 15px;
-
     border: 1px solid rgba(212,175,55,0.18);
-
     border-radius: 18px;
-
     pointer-events: none;
-
 }
 
 .passport-inner::after {
-
     content: "🇰🇼";
-
     position: absolute;
-
     left: -35px;
-
     bottom: -55px;
-
     font-size: 190px;
-
     opacity: 0.035;
-
     pointer-events: none;
-
 }
 
-/* ================= CLOSE ================= */
+/* CLOSE */
 
 .close-passport {
-
     position: absolute;
-
     top: 17px;
-
     left: 17px;
-
     z-index: 10;
-
     width: 38px;
-
     height: 38px;
-
     border-radius: 50%;
-
     border: 1px solid rgba(212,175,55,0.4);
-
     background: rgba(0,0,0,0.35);
-
     color: #e6c65c;
-
     font-size: 22px;
-
     cursor: pointer;
-
 }
 
-/* ================= PASSPORT CONTENT ================= */
+/* CONTENT */
 
 .passport-top {
-
     position: relative;
-
     z-index: 2;
-
     display: flex;
-
     align-items: center;
-
     justify-content: space-between;
-
     color: #e8c657;
-
     font-size: 25px;
-
 }
 
 .passport-code {
-
     margin-top: 25px;
-
     color: rgba(255,255,255,0.45);
-
     font-size: 11px;
-
     letter-spacing: 4px;
-
 }
 
 .passport-heading {
-
     margin: 8px 0 5px;
-
     color: #f0cf55;
-
     font-size: clamp(35px, 8vw, 55px);
-
     font-weight: 900;
-
 }
 
 .passport-subheading {
-
     color: rgba(255,255,255,0.65);
-
     font-size: 15px;
-
 }
 
 .passport-divider {
-
     height: 1px;
-
     margin: 28px 0;
-
     background:
-
         linear-gradient(
             90deg,
             transparent,
             rgba(212,175,55,0.8),
             transparent
         );
-
 }
 
 .passport-label {
-
     color: rgba(255,255,255,0.45);
-
     font-size: 13px;
-
 }
 
 .passport-name {
-
     margin: 10px 0 25px;
-
     color: white;
-
     font-size: clamp(28px, 7vw, 43px);
-
     font-weight: 900;
-
     word-break: break-word;
-
 }
 
 .passport-match {
-
     color: white;
-
     font-size: clamp(22px, 5vw, 30px);
-
     font-weight: 900;
-
 }
 
 .passport-approved {
-
     display: inline-block;
-
     margin-top: 25px;
-
     padding: 10px 20px;
-
     border-radius: 100px;
-
     background: #d4af37;
-
     color: #071952;
-
     font-size: 14px;
-
     font-weight: 900;
-
 }
 
 .passport-number {
-
     margin-top: 22px;
-
     color: rgba(255,255,255,0.42);
-
     font-size: 12px;
-
     letter-spacing: 2px;
-
 }
 
-/* ================= DOWNLOAD ================= */
+/* DOWNLOAD */
 
 .download-button {
-
     display: block;
-
     width: 100%;
-
     margin-top: 25px;
-
     padding: 16px;
-
     border: none;
-
     border-radius: 15px;
-
     background: white;
-
     color: #071952;
-
     font-size: 17px;
-
     font-weight: 900;
-
     cursor: pointer;
-
     transition: 0.3s;
-
 }
 
 .download-button:hover {
-
     transform: translateY(-2px);
-
 }
 
-/* ================= ANIMATION ================= */
+/* ANIMATIONS */
 
 @keyframes overlayIn {
 
@@ -678,25 +545,19 @@ footer {
 @keyframes passportIn {
 
     from {
-
         opacity: 0;
-
         transform:
             translateY(45px)
             scale(0.92)
             rotateX(8deg);
-
     }
 
     to {
-
         opacity: 1;
-
         transform:
             translateY(0)
             scale(1)
             rotateX(0);
-
     }
 
 }
@@ -713,63 +574,43 @@ footer {
 
 }
 
-/* ================= MOBILE ================= */
+/* MOBILE */
 
 @media (max-width: 650px) {
 
     .hero {
-
         height: 75vh;
-
         min-height: 470px;
-
     }
 
     .hero h1 {
-
-        font-size:
-            clamp(48px, 14vw, 75px);
-
+        font-size: clamp(48px, 14vw, 75px);
     }
 
     .teams {
-
         flex-direction: column;
-
         gap: 15px;
-
     }
 
     .team {
-
         font-size: 30px;
-
     }
 
     .vs {
-
         width: 52px;
-
         height: 52px;
-
     }
 
     .match-card {
-
         padding: 45px 15px;
-
     }
 
     .registration {
-
         padding: 40px 15px;
-
     }
 
     .passport-inner {
-
         padding: 30px 20px;
-
     }
 
 }
@@ -782,7 +623,7 @@ footer {
 <body>
 
 
-<!-- ================= HERO ================= -->
+<!-- HERO -->
 
 <header class="hero">
 
@@ -792,23 +633,19 @@ footer {
 
     </video>
 
-
     <div class="hero-content">
 
         <div class="badge">
             🇰🇼 فعالية جواز الإياب
         </div>
 
-
         <h1>
             جواز الإياب 🎫
         </h1>
 
-
         <p class="hero-subtitle">
             رحلة جديدة... مدرج واحد... وحلم واحد
         </p>
-
 
         <a
             href="#registration"
@@ -822,7 +659,7 @@ footer {
 </header>
 
 
-<!-- ================= NEWS ================= -->
+<!-- NEWS -->
 
 <div class="news-bar">
 
@@ -850,7 +687,7 @@ footer {
 <main class="container">
 
 
-<!-- ================= MATCH ================= -->
+<!-- MATCH -->
 
 <section>
 
@@ -858,16 +695,13 @@ footer {
         THE RETURN
     </div>
 
-
     <h2 class="section-title">
         ⚽ المواجهة
     </h2>
 
-
     <p class="section-description">
         الإياب... فصل جديد من الحكاية 🇰🇼
     </p>
-
 
     <div class="match-card">
 
@@ -875,25 +709,21 @@ footer {
             RETURN LEG
         </div>
 
-
         <div class="teams">
 
             <div class="team">
                 🇰🇼 الكويت
             </div>
 
-
             <div class="vs">
                 VS
             </div>
-
 
             <div class="team">
                 روسيا 🇷🇺
             </div>
 
         </div>
-
 
         <div class="match-note">
             🎫 تفاصيل المباراة سيتم الإعلان عنها لاحقًا
@@ -904,7 +734,7 @@ footer {
 </section>
 
 
-<!-- ================= REGISTRATION ================= -->
+<!-- REGISTRATION -->
 
 <section id="registration">
 
@@ -912,16 +742,13 @@ footer {
         YOUR PASS
     </div>
 
-
     <h2 class="section-title">
         🎫 احجز مكانك في الإياب
     </h2>
 
-
     <p class="section-description">
         سجّل اسمك وأصدر جواز الإياب الخاص بك
     </p>
-
 
     <div class="registration">
 
@@ -929,11 +756,9 @@ footer {
             إصدار جواز الإياب
         </h2>
 
-
         <p>
             اكتب اسمك وانضم إلى جمهور الإياب 🇰🇼
         </p>
-
 
         <input
             type="text"
@@ -941,7 +766,6 @@ footer {
             placeholder="اكتب اسمك هنا"
             maxlength="50"
         >
-
 
         <button
             id="registerButton"
@@ -951,11 +775,9 @@ footer {
             🎟️ إصدار جواز الإياب
         </button>
 
-
         <div id="status">
             لم تسجل أي حضور حتى الآن.
         </div>
-
 
         <div id="counter">
             👥 عدد المسجلين: ...
@@ -966,7 +788,7 @@ footer {
 </section>
 
 
-<!-- ================= MEDIA ================= -->
+<!-- MEDIA -->
 
 <section>
 
@@ -974,11 +796,9 @@ footer {
         MEDIA CENTER
     </div>
 
-
     <h2 class="section-title">
         📰 المركز الإعلامي
     </h2>
-
 
     <div class="media-box">
 
@@ -986,16 +806,11 @@ footer {
             الحكاية لم تنتهِ...
         </h3>
 
-
         <p>
-
             هنا تبدأ رحلة الإياب، وهنا يجتمع الجمهور
             على موعد مع ليلة جديدة من الحماس والانتماء.
-
             <br>
-
             🇰🇼 كل اسم يُسجّل... فصل جديد في الحكاية.
-
         </p>
 
     </div>
@@ -1017,9 +832,7 @@ footer {
 </footer>
 
 
-<!-- ================================================= */
-/* ================= PASSPORT POPUP ================== */
-/* ================================================= -->
+<!-- PASSPORT POPUP -->
 
 <div
     id="passportOverlay"
@@ -1028,10 +841,12 @@ footer {
 
     <div class="passport-window">
 
-        <div class="passport-card">
+        <div
+            id="passportCard"
+            class="passport-card"
+        >
 
             <div class="passport-inner">
-
 
                 <button
                     class="close-passport"
@@ -1040,18 +855,15 @@ footer {
                     ×
                 </button>
 
-
                 <div class="passport-top">
 
                     <span>
                         🇰🇼
                     </span>
 
-
                     <strong>
-                        جواز الإياب
+                        تذكرة الإياب
                     </strong>
-
 
                     <span>
                         🎫
@@ -1059,29 +871,23 @@ footer {
 
                 </div>
 
-
                 <div class="passport-code">
-                    RETURN PASS • KUWAIT
+                    RETURN TICKET • KUWAIT
                 </div>
-
 
                 <div class="passport-heading">
-                    جواز الإياب
+                    تذكرة الإياب
                 </div>
-
 
                 <div class="passport-subheading">
                     تم اعتماد حضورك رسميًا
                 </div>
 
-
                 <div class="passport-divider"></div>
 
-
                 <div class="passport-label">
-                    حامل الجواز
+                    حامل التذكرة
                 </div>
-
 
                 <div
                     id="ticketName"
@@ -1089,35 +895,30 @@ footer {
                 >
                 </div>
 
-
                 <div class="passport-divider"></div>
-
 
                 <div class="passport-match">
                     الكويت 🇰🇼 × روسيا 🇷🇺
                 </div>
 
-
                 <div class="passport-approved">
                     ✓ حضور معتمد
                 </div>
-
 
                 <div
                     id="ticketNumber"
                     class="passport-number"
                 >
-                    RETURN PASS
+                    RETURN TICKET
                 </div>
 
-
                 <button
+                    id="downloadButton"
                     class="download-button"
                     onclick="downloadPassport()"
                 >
-                    ⬇️ تحميل جواز الإياب
+                    ⬇️ تحميل التذكرة
                 </button>
-
 
             </div>
 
@@ -1128,7 +929,7 @@ footer {
 </div>
 
 
-<!-- ================= FIREBASE ================= -->
+<!-- FIREBASE -->
 
 <script type="module">
 
@@ -1179,24 +980,19 @@ const db =
     getFirestore(app);
 
 
-/* ================= COUNTER ================= */
+/* COUNTER */
 
 async function updateCounter() {
 
     try {
 
         const participantsRef =
-            collection(
-                db,
-                "participants"
-            );
-
+            collection(db, "participants");
 
         const snapshot =
             await getCountFromServer(
                 participantsRef
             );
-
 
         document
             .getElementById("counter")
@@ -1210,7 +1006,6 @@ async function updateCounter() {
 
         console.error(error);
 
-
         document
             .getElementById("counter")
             .innerText =
@@ -1221,7 +1016,7 @@ async function updateCounter() {
 }
 
 
-/* ================= REGISTRATION ================= */
+/* REGISTRATION */
 
 window.registerAttendance =
     async function() {
@@ -1229,18 +1024,15 @@ window.registerAttendance =
         const nameInput =
             document.getElementById("name");
 
-
         const button =
             document.getElementById(
                 "registerButton"
             );
 
-
         const status =
             document.getElementById(
                 "status"
             );
-
 
         const name =
             nameInput.value.trim();
@@ -1258,9 +1050,8 @@ window.registerAttendance =
 
         button.disabled = true;
 
-
         status.innerHTML =
-            "⏳ جارٍ إصدار جوازك...";
+            "⏳ جارٍ إصدار تذكرتك...";
 
 
         try {
@@ -1273,19 +1064,16 @@ window.registerAttendance =
                 ),
 
                 {
-
                     name: name,
-
                     createdAt:
                         serverTimestamp()
-
                 }
 
             );
 
 
             status.innerHTML =
-                "✅ تم إصدار جواز الإياب يا " +
+                "✅ تم إصدار تذكرة الإياب يا " +
                 name +
                 "!";
 
@@ -1321,13 +1109,9 @@ window.registerAttendance =
                     "ticketNumber"
                 )
                 .innerText =
-                    "RETURN PASS • RT-" +
+                    "RETURN TICKET • RT-" +
                     passportNumber;
 
-
-            /*
-             * إظهار الجواز فوق الشاشة مباشرة
-             */
 
             document
                 .getElementById(
@@ -1347,9 +1131,8 @@ window.registerAttendance =
 
             console.error(error);
 
-
             status.innerHTML =
-                "❌ ما قدرنا نصدر جوازك الآن.<br>" +
+                "❌ ما قدرنا نصدر تذكرتك الآن.<br>" +
                 "حاولي مرة ثانية.";
 
         }
@@ -1363,7 +1146,7 @@ window.registerAttendance =
     };
 
 
-/* ================= CLOSE PASSPORT ================= */
+/* CLOSE */
 
 window.closePassport =
     function() {
@@ -1377,25 +1160,123 @@ window.closePassport =
     };
 
 
-/* ================= DOWNLOAD ================= */
+/* DOWNLOAD */
 
 window.downloadPassport =
-    function() {
+    async function() {
 
-        alert(
-            "ميزة تحميل الجواز سنجهزها في الخطوة التالية 🎫🇰🇼"
-        );
+        const button =
+            document.getElementById(
+                "downloadButton"
+            );
+
+        const card =
+            document.getElementById(
+                "passportCard"
+            );
+
+
+        button.disabled = true;
+
+        button.innerText =
+            "⏳ جارٍ تجهيز التذكرة...";
+
+
+        try {
+
+            if (
+                typeof html2canvas ===
+                "undefined"
+            ) {
+
+                throw new Error(
+                    "html2canvas not loaded"
+                );
+
+            }
+
+
+            const canvas =
+                await html2canvas(
+                    card,
+                    {
+                        scale: 2,
+                        backgroundColor: null,
+                        useCORS: true
+                    }
+                );
+
+
+            const link =
+                document.createElement("a");
+
+
+            const name =
+                document
+                    .getElementById(
+                        "ticketName"
+                    )
+                    .innerText
+                    .trim()
+                    .replace(
+                        /[\\/:*?"<>|]/g,
+                        "-"
+                    );
+
+
+            link.download =
+                "تذكرة-الإياب-" +
+                name +
+                ".png";
+
+
+            link.href =
+                canvas.toDataURL(
+                    "image/png"
+                );
+
+
+            link.click();
+
+
+        }
+
+        catch (error) {
+
+            console.error(error);
+
+            alert(
+                "تعذر تحميل التذكرة حاليًا، حاولي مرة ثانية ❤️"
+            );
+
+        }
+
+        finally {
+
+            button.disabled = false;
+
+            button.innerText =
+                "⬇️ تحميل التذكرة";
+
+        }
 
     };
 
 
-/* ================= START ================= */
+/* START */
 
 updateCounter();
 
 </script>
 
+
+<!-- DOWNLOAD LIBRARY -->
+
+<script
+src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js">
+</script>
+
+
 </body>
 
 </html>
-```
