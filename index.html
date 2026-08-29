@@ -30,6 +30,8 @@ body {
     overflow-x: hidden;
 }
 
+/* HERO */
+
 .hero {
     position: relative;
     width: 100%;
@@ -104,11 +106,6 @@ body {
     font-size: 19px;
     font-weight: 900;
     box-shadow: 0 12px 40px rgba(0,0,0,0.45);
-    transition: 0.3s;
-}
-
-.hero-button:hover {
-    transform: translateY(-4px) scale(1.04);
 }
 
 .news-bar {
@@ -154,9 +151,9 @@ section {
     font-size: 17px;
 }
 
+/* MATCH */
+
 .match-card {
-    position: relative;
-    overflow: hidden;
     padding: 55px 30px;
     border-radius: 35px;
     background:
@@ -205,6 +202,8 @@ section {
     color: rgba(255,255,255,0.55);
 }
 
+/* REGISTRATION */
+
 .registration {
     padding: 50px 25px;
     border-radius: 35px;
@@ -252,7 +251,6 @@ input:focus {
 
 .register-button:disabled {
     opacity: 0.6;
-    cursor: wait;
 }
 
 #status {
@@ -273,6 +271,8 @@ input:focus {
     font-size: 18px;
     font-weight: bold;
 }
+
+/* MEDIA */
 
 .media-box {
     padding: 40px 25px;
@@ -297,8 +297,7 @@ footer {
     color: rgba(255,255,255,0.45);
 }
 
-
-/* ================= التذكرة المنبثقة ================= */
+/* ================= التذكرة ================= */
 
 .passport-overlay {
     display: none;
@@ -314,7 +313,6 @@ footer {
 
 .passport-overlay.show {
     display: flex;
-    animation: overlayIn 0.35s ease;
 }
 
 .passport-window {
@@ -322,7 +320,6 @@ footer {
     width: min(650px, 96vw);
     max-height: 94vh;
     overflow-y: auto;
-    animation: passportIn 0.65s ease;
 }
 
 .passport-card {
@@ -477,30 +474,7 @@ footer {
     cursor: pointer;
 }
 
-.download-button:disabled {
-    opacity: 0.6;
-}
-
-@keyframes overlayIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-@keyframes passportIn {
-    from {
-        opacity: 0;
-        transform: translateY(45px) scale(0.92);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
-}
-
-@keyframes newsMove {
-    from { transform: translateX(100%); }
-    to { transform: translateX(-100%); }
-}
+/* MOBILE */
 
 @media (max-width: 650px) {
 
@@ -540,6 +514,59 @@ footer {
     }
 }
 
+
+/* ================= الطباعة ================= */
+
+@media print {
+
+    body * {
+        visibility: hidden !important;
+    }
+
+    #passportOverlay,
+    #passportOverlay * {
+        visibility: visible !important;
+    }
+
+    #passportOverlay {
+        position: absolute !important;
+        inset: 0 !important;
+        display: flex !important;
+        background: white !important;
+        padding: 0 !important;
+    }
+
+    .passport-window {
+        width: 100% !important;
+        max-width: 650px !important;
+        max-height: none !important;
+        overflow: visible !important;
+        margin: auto !important;
+    }
+
+    .passport-card {
+        box-shadow: none !important;
+    }
+
+    .close-passport,
+    .download-button {
+        display: none !important;
+    }
+
+}
+
+@keyframes newsMove {
+
+    from {
+        transform: translateX(100%);
+    }
+
+    to {
+        transform: translateX(-100%);
+    }
+
+}
+
 </style>
 
 </head>
@@ -547,6 +574,8 @@ footer {
 
 <body>
 
+
+<!-- HERO -->
 
 <header class="hero">
 
@@ -582,22 +611,18 @@ footer {
 </header>
 
 
+<!-- NEWS -->
+
 <div class="news-bar">
 
     <div class="news-inner">
 
         🇰🇼 جواز الإياب مفتوح للجمهور — سجّل حضورك الآن 🎫
-
         &nbsp;&nbsp; • &nbsp;&nbsp;
-
         المدرجات تناديكم 🇰🇼
-
         &nbsp;&nbsp; • &nbsp;&nbsp;
-
         الكويت × روسيا 🇰🇼🇷🇺
-
         &nbsp;&nbsp; • &nbsp;&nbsp;
-
         العودة تبدأ من المدرجات 🔥
 
     </div>
@@ -607,6 +632,8 @@ footer {
 
 <main class="container">
 
+
+<!-- MATCH -->
 
 <section>
 
@@ -652,6 +679,8 @@ footer {
 
 </section>
 
+
+<!-- REGISTRATION -->
 
 <section id="registration">
 
@@ -705,6 +734,8 @@ footer {
 </section>
 
 
+<!-- MEDIA -->
+
 <section>
 
     <div class="section-kicker">
@@ -739,15 +770,13 @@ footer {
 <footer>
 
     🇰🇼 جواز الإياب
-
     <br><br>
-
     معًا نحو الإياب ❤️
 
 </footer>
 
 
-<!-- ================= التذكرة ================= -->
+<!-- ================= التذكرة المنبثقة ================= -->
 
 <div
     id="passportOverlay"
@@ -894,7 +923,10 @@ async function updateCounter() {
     try {
 
         const participantsRef =
-            collection(db, "participants");
+            collection(
+                db,
+                "participants"
+            );
 
         const snapshot =
             await getCountFromServer(
@@ -964,15 +996,18 @@ async function() {
     try {
 
         await addDoc(
+
             collection(
                 db,
                 "participants"
             ),
+
             {
                 name: name,
                 createdAt:
                     serverTimestamp()
             }
+
         );
 
 
@@ -983,7 +1018,9 @@ async function() {
 
 
         document
-            .getElementById("ticketName")
+            .getElementById(
+                "ticketName"
+            )
             .innerText =
                 name;
 
@@ -1048,7 +1085,7 @@ async function() {
 };
 
 
-/* ================= إغلاق التذكرة ================= */
+/* ================= إغلاق ================= */
 
 window.closePassport =
 function() {
@@ -1062,136 +1099,12 @@ function() {
 };
 
 
-/* ================= تحميل التذكرة ================= */
+/* ================= تحميل / PDF ================= */
 
 window.downloadPassport =
-async function() {
+function() {
 
-    const button =
-        document.getElementById(
-            "downloadButton"
-        );
-
-    button.disabled = true;
-
-    button.innerText =
-        "⏳ جارٍ تجهيز التذكرة...";
-
-
-    try {
-
-        /*
-         * نستورد المكتبة مباشرة عند الحاجة.
-         * هذا يجعل تحميل التذكرة لا يعتمد
-         * على تحميل المكتبة مسبقًا.
-         */
-
-        if (
-            typeof html2canvas ===
-            "undefined"
-        ) {
-
-            await new Promise(
-                function(resolve, reject) {
-
-                    const script =
-                        document.createElement(
-                            "script"
-                        );
-
-                    script.src =
-                        "https://html2canvas.hertzen.com/dist/html2canvas.min.js";
-
-                    script.onload =
-                        resolve;
-
-                    script.onerror =
-                        reject;
-
-                    document.head.appendChild(
-                        script
-                    );
-
-                }
-            );
-
-        }
-
-
-        const card =
-            document.getElementById(
-                "passportCard"
-            );
-
-
-        const canvas =
-            await html2canvas(
-                card,
-                {
-                    scale: 2,
-                    useCORS: true,
-                    backgroundColor: null
-                }
-            );
-
-
-        const link =
-            document.createElement("a");
-
-
-        const name =
-            document
-                .getElementById(
-                    "ticketName"
-                )
-                .innerText
-                .trim()
-                .replace(
-                    /[\\/:*?"<>|]/g,
-                    "-"
-                );
-
-
-        link.download =
-            "تذكرة-الإياب-" +
-            name +
-            ".png";
-
-
-        link.href =
-            canvas.toDataURL(
-                "image/png"
-            );
-
-
-        document.body.appendChild(link);
-
-        link.click();
-
-        link.remove();
-
-
-    }
-
-    catch (error) {
-
-        console.error(error);
-
-        alert(
-            "تعذر تحميل التذكرة حاليًا ❤️\n" +
-            "إذا كنتِ على الجوال، جربي الضغط مطولًا على التذكرة وحفظ الصورة."
-        );
-
-    }
-
-    finally {
-
-        button.disabled = false;
-
-        button.innerText =
-            "⬇️ تحميل التذكرة";
-
-    }
+    window.print();
 
 };
 
@@ -1207,8 +1120,3 @@ updateCounter();
 
 </html>
 ```
-
-**بعد ما تلصقينه وتسوي Commit Changes، جربي التسجيل مرة واحدة.**
-إذا ظهرت التذكرة، اضغطي **تحميل التذكرة**. 🎫🇰🇼
-
-ولا تحذفين ملف الفيديو؛ الكود ما زال يبحث عن **`منتخب الكويت.MP4`** بالاسم نفسه. ❤️
