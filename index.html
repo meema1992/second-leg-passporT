@@ -14,15 +14,11 @@
     box-sizing: border-box;
 }
 
-html {
-    scroll-behavior: smooth;
-}
-
 body {
     margin: 0;
     font-family: Arial, Tahoma, sans-serif;
     background:
-        radial-gradient(circle at top, #173d68 0%, transparent 35%),
+        radial-gradient(circle at top, #173d68, transparent 35%),
         linear-gradient(145deg, #020812, #071952 50%, #031f2d);
     color: white;
     text-align: center;
@@ -77,7 +73,6 @@ body {
     border-radius: 100px;
     background: rgba(255,255,255,0.10);
     border: 1px solid rgba(255,255,255,0.35);
-    backdrop-filter: blur(12px);
     font-size: 15px;
     margin-bottom: 20px;
 }
@@ -105,8 +100,9 @@ body {
     text-decoration: none;
     font-size: 19px;
     font-weight: 900;
-    box-shadow: 0 12px 40px rgba(0,0,0,0.45);
 }
+
+/* NEWS */
 
 .news-bar {
     overflow: hidden;
@@ -121,7 +117,6 @@ body {
     color: #e5c65a;
     font-size: 15px;
     font-weight: bold;
-    animation: newsMove 18s linear infinite;
 }
 
 .container {
@@ -164,7 +159,6 @@ section {
         );
     border: 1px solid rgba(212,175,55,0.28);
     box-shadow: 0 30px 80px rgba(0,0,0,0.38);
-    backdrop-filter: blur(18px);
 }
 
 .match-label {
@@ -209,7 +203,6 @@ section {
     border-radius: 35px;
     background: rgba(0,0,0,0.25);
     border: 1px solid rgba(212,175,55,0.20);
-    box-shadow: 0 30px 80px rgba(0,0,0,0.3);
 }
 
 .registration h2 {
@@ -232,10 +225,6 @@ input {
     margin-top: 20px;
 }
 
-input:focus {
-    border-color: #d4af37;
-}
-
 .register-button {
     display: block;
     margin: 18px auto;
@@ -247,10 +236,6 @@ input:focus {
     font-size: 18px;
     font-weight: 900;
     cursor: pointer;
-}
-
-.register-button:disabled {
-    opacity: 0.6;
 }
 
 #status {
@@ -297,6 +282,7 @@ footer {
     color: rgba(255,255,255,0.45);
 }
 
+
 /* ================= التذكرة ================= */
 
 .passport-overlay {
@@ -304,11 +290,10 @@ footer {
     position: fixed;
     inset: 0;
     z-index: 9999;
-    background: rgba(1,5,15,0.90);
-    backdrop-filter: blur(16px);
+    background: rgba(1,5,15,0.94);
     align-items: center;
     justify-content: center;
-    padding: 20px;
+    padding: 15px;
 }
 
 .passport-overlay.show {
@@ -316,9 +301,8 @@ footer {
 }
 
 .passport-window {
-    position: relative;
     width: min(650px, 96vw);
-    max-height: 94vh;
+    max-height: 95vh;
     overflow-y: auto;
 }
 
@@ -460,7 +444,7 @@ footer {
     letter-spacing: 2px;
 }
 
-.download-button {
+.save-button {
     display: block;
     width: 100%;
     margin-top: 25px;
@@ -473,6 +457,14 @@ footer {
     font-weight: 900;
     cursor: pointer;
 }
+
+.mobile-hint {
+    margin-top: 12px;
+    color: rgba(255,255,255,0.55);
+    font-size: 13px;
+    line-height: 1.7;
+}
+
 
 /* MOBILE */
 
@@ -501,68 +493,8 @@ footer {
         height: 52px;
     }
 
-    .match-card {
-        padding: 45px 15px;
-    }
-
-    .registration {
-        padding: 40px 15px;
-    }
-
     .passport-inner {
         padding: 30px 20px;
-    }
-}
-
-
-/* ================= الطباعة ================= */
-
-@media print {
-
-    body * {
-        visibility: hidden !important;
-    }
-
-    #passportOverlay,
-    #passportOverlay * {
-        visibility: visible !important;
-    }
-
-    #passportOverlay {
-        position: absolute !important;
-        inset: 0 !important;
-        display: flex !important;
-        background: white !important;
-        padding: 0 !important;
-    }
-
-    .passport-window {
-        width: 100% !important;
-        max-width: 650px !important;
-        max-height: none !important;
-        overflow: visible !important;
-        margin: auto !important;
-    }
-
-    .passport-card {
-        box-shadow: none !important;
-    }
-
-    .close-passport,
-    .download-button {
-        display: none !important;
-    }
-
-}
-
-@keyframes newsMove {
-
-    from {
-        transform: translateX(100%);
-    }
-
-    to {
-        transform: translateX(-100%);
     }
 
 }
@@ -574,8 +506,6 @@ footer {
 
 <body>
 
-
-<!-- HERO -->
 
 <header class="hero">
 
@@ -611,18 +541,16 @@ footer {
 </header>
 
 
-<!-- NEWS -->
-
 <div class="news-bar">
 
     <div class="news-inner">
 
         🇰🇼 جواز الإياب مفتوح للجمهور — سجّل حضورك الآن 🎫
-        &nbsp;&nbsp; • &nbsp;&nbsp;
+        &nbsp; • &nbsp;
         المدرجات تناديكم 🇰🇼
-        &nbsp;&nbsp; • &nbsp;&nbsp;
+        &nbsp; • &nbsp;
         الكويت × روسيا 🇰🇼🇷🇺
-        &nbsp;&nbsp; • &nbsp;&nbsp;
+        &nbsp; • &nbsp;
         العودة تبدأ من المدرجات 🔥
 
     </div>
@@ -632,8 +560,6 @@ footer {
 
 <main class="container">
 
-
-<!-- MATCH -->
 
 <section>
 
@@ -680,8 +606,6 @@ footer {
 </section>
 
 
-<!-- REGISTRATION -->
-
 <section id="registration">
 
     <div class="section-kicker">
@@ -693,13 +617,13 @@ footer {
     </h2>
 
     <p class="section-description">
-        سجّل اسمك وأصدر جواز الإياب الخاص بك
+        سجّل اسمك وأصدر تذكرة الإياب الخاصة بك
     </p>
 
     <div class="registration">
 
         <h2>
-            إصدار جواز الإياب
+            إصدار تذكرة الإياب
         </h2>
 
         <p>
@@ -718,7 +642,7 @@ footer {
             class="register-button"
             onclick="registerAttendance()"
         >
-            🎟️ إصدار جواز الإياب
+            🎟️ إصدار تذكرة الإياب
         </button>
 
         <div id="status">
@@ -733,8 +657,6 @@ footer {
 
 </section>
 
-
-<!-- MEDIA -->
 
 <section>
 
@@ -776,7 +698,7 @@ footer {
 </footer>
 
 
-<!-- ================= التذكرة المنبثقة ================= -->
+<!-- ================= التذكرة ================= -->
 
 <div
     id="passportOverlay"
@@ -850,12 +772,16 @@ footer {
                 ></div>
 
                 <button
-                    id="downloadButton"
-                    class="download-button"
-                    onclick="downloadPassport()"
+                    class="save-button"
+                    onclick="saveTicket()"
                 >
-                    ⬇️ تحميل التذكرة
+                    🖼️ حفظ التذكرة
                 </button>
+
+                <div class="mobile-hint">
+                    على الجوال: اضغطي مطولًا على التذكرة
+                    ثم اختاري «حفظ في الصور» إذا ظهر الخيار.
+                </div>
 
             </div>
 
@@ -916,7 +842,7 @@ const db =
     getFirestore(app);
 
 
-/* ================= العداد ================= */
+/* العداد */
 
 async function updateCounter() {
 
@@ -955,7 +881,7 @@ async function updateCounter() {
 }
 
 
-/* ================= التسجيل ================= */
+/* التسجيل */
 
 window.registerAttendance =
 async function() {
@@ -1085,7 +1011,7 @@ async function() {
 };
 
 
-/* ================= إغلاق ================= */
+/* إغلاق التذكرة */
 
 window.closePassport =
 function() {
@@ -1099,12 +1025,307 @@ function() {
 };
 
 
-/* ================= تحميل / PDF ================= */
+/* حفظ التذكرة */
 
-window.downloadPassport =
+window.saveTicket =
 function() {
 
-    window.print();
+    const card =
+        document.getElementById(
+            "passportCard"
+        );
+
+    /*
+       نفتح التذكرة في نافذة جديدة.
+       من الجوال يمكن الضغط عليها مطولًا
+       وحفظها كصورة.
+    */
+
+    const newWindow =
+        window.open(
+            "",
+            "_blank"
+        );
+
+
+    if (!newWindow) {
+
+        alert(
+            "اضغطي مطولًا على التذكرة الحالية ❤️"
+        );
+
+        return;
+
+    }
+
+
+    newWindow.document.write(`
+    
+        <!DOCTYPE html>
+
+        <html lang="ar" dir="rtl">
+
+        <head>
+
+            <meta
+                name="viewport"
+                content="width=device-width, initial-scale=1.0"
+            >
+
+            <title>
+                تذكرة الإياب
+            </title>
+
+            <style>
+
+                body {
+
+                    margin: 0;
+
+                    min-height: 100vh;
+
+                    display: flex;
+
+                    align-items: center;
+
+                    justify-content: center;
+
+                    padding: 20px;
+
+                    background: #020812;
+
+                    font-family: Arial, Tahoma, sans-serif;
+
+                }
+
+                .ticket {
+
+                    width: min(620px, 94vw);
+
+                    padding: 7px;
+
+                    border-radius: 32px;
+
+                    background:
+                    linear-gradient(
+                        135deg,
+                        #fff0a0,
+                        #b88918,
+                        #f5d765,
+                        #8c6510,
+                        #e8c34f
+                    );
+
+                    box-shadow:
+                    0 30px 80px rgba(0,0,0,0.7);
+
+                }
+
+                .inside {
+
+                    border-radius: 25px;
+
+                    padding: 45px 25px;
+
+                    text-align: center;
+
+                    color: white;
+
+                    background:
+                    linear-gradient(
+                        145deg,
+                        #0a2147,
+                        #020916 65%,
+                        #071936
+                    );
+
+                }
+
+                .top {
+
+                    display: flex;
+
+                    justify-content:
+                    space-between;
+
+                    color: #e8c657;
+
+                    font-size: 24px;
+
+                }
+
+                .code {
+
+                    margin-top: 25px;
+
+                    color:
+                    rgba(255,255,255,0.45);
+
+                    font-size: 11px;
+
+                    letter-spacing: 4px;
+
+                }
+
+                h1 {
+
+                    color: #f0cf55;
+
+                    font-size: 48px;
+
+                    margin: 15px 0 5px;
+
+                }
+
+                .sub {
+
+                    color:
+                    rgba(255,255,255,0.65);
+
+                }
+
+                .line {
+
+                    height: 1px;
+
+                    margin: 28px 0;
+
+                    background: #d4af37;
+
+                }
+
+                .label {
+
+                    color:
+                    rgba(255,255,255,0.45);
+
+                    font-size: 13px;
+
+                }
+
+                .name {
+
+                    margin: 10px 0 30px;
+
+                    font-size: 38px;
+
+                    font-weight: bold;
+
+                }
+
+                .match {
+
+                    font-size: 27px;
+
+                    font-weight: bold;
+
+                }
+
+                .approved {
+
+                    display: inline-block;
+
+                    margin-top: 25px;
+
+                    padding: 10px 20px;
+
+                    border-radius: 50px;
+
+                    background: #d4af37;
+
+                    color: #071952;
+
+                    font-weight: bold;
+
+                }
+
+                .number {
+
+                    margin-top: 25px;
+
+                    color:
+                    rgba(255,255,255,0.4);
+
+                    font-size: 12px;
+
+                    letter-spacing: 2px;
+
+                }
+
+            </style>
+
+        </head>
+
+        <body>
+
+            <div class="ticket">
+
+                <div class="inside">
+
+                    <div class="top">
+
+                        <span>🇰🇼</span>
+
+                        <strong>
+                            تذكرة الإياب
+                        </strong>
+
+                        <span>🎫</span>
+
+                    </div>
+
+                    <div class="code">
+                        RETURN TICKET • KUWAIT
+                    </div>
+
+                    <h1>
+                        تذكرة الإياب
+                    </h1>
+
+                    <div class="sub">
+                        تم اعتماد حضورك رسميًا
+                    </div>
+
+                    <div class="line"></div>
+
+                    <div class="label">
+                        حامل التذكرة
+                    </div>
+
+                    <div class="name">
+                        ${document
+                            .getElementById("ticketName")
+                            .innerText}
+                    </div>
+
+                    <div class="line"></div>
+
+                    <div class="match">
+                        الكويت 🇰🇼 × روسيا 🇷🇺
+                    </div>
+
+                    <div class="approved">
+                        ✓ حضور معتمد
+                    </div>
+
+                    <div class="number">
+                        ${document
+                            .getElementById("ticketNumber")
+                            .innerText}
+                    </div>
+
+                </div>
+
+            </div>
+
+        </body>
+
+        </html>
+
+    `);
+
+
+    newWindow.document.close();
 
 };
 
