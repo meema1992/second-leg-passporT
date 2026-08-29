@@ -22,20 +22,20 @@ body {
     margin: 0;
     font-family: Arial, Tahoma, sans-serif;
     background:
-        radial-gradient(circle at top, #123b68 0%, transparent 45%),
-        linear-gradient(145deg, #020b18, #071952 45%, #063b45);
+        radial-gradient(circle at 50% 0%, #17456d 0%, transparent 35%),
+        linear-gradient(145deg, #020812, #061936 48%, #032f38);
     color: white;
     text-align: center;
     min-height: 100vh;
     overflow-x: hidden;
 }
 
-/* ===== HERO ===== */
+/* ================= HERO ================= */
 
 .hero {
     position: relative;
     width: 100%;
-    aspect-ratio: 16 / 9;
+    height: min(760px, 88vh);
     min-height: 520px;
     display: flex;
     align-items: center;
@@ -52,50 +52,54 @@ body {
     object-fit: cover;
 }
 
-.hero::after {
+.hero::before {
     content: "";
     position: absolute;
     inset: 0;
+    z-index: 1;
     background:
         linear-gradient(
-            to bottom,
-            rgba(0,0,0,0.15),
-            rgba(2,8,18,0.82)
+            180deg,
+            rgba(0,0,0,0.05) 0%,
+            rgba(0,0,0,0.25) 45%,
+            rgba(2,8,18,0.95) 100%
         );
-    pointer-events: none;
 }
 
 .hero-content {
     position: relative;
     z-index: 2;
-    padding: 30px 20px;
-    max-width: 900px;
-    animation: fadeUp 1.2s ease;
+    width: min(900px, 90%);
+    padding-top: 40px;
+    animation: fadeUp 1s ease;
 }
 
 .badge {
     display: inline-block;
-    padding: 9px 18px;
-    border: 1px solid rgba(255,255,255,0.4);
-    border-radius: 50px;
-    background: rgba(255,255,255,0.08);
-    backdrop-filter: blur(10px);
+    padding: 10px 20px;
+    border-radius: 100px;
+    background: rgba(255,255,255,0.10);
+    border: 1px solid rgba(255,255,255,0.35);
+    backdrop-filter: blur(12px);
     font-size: 15px;
     margin-bottom: 20px;
 }
 
 .hero h1 {
-    font-size: clamp(55px, 10vw, 110px);
     margin: 0;
+    font-size: clamp(55px, 10vw, 115px);
     font-weight: 900;
-    letter-spacing: -3px;
-    text-shadow: 0 10px 35px rgba(0,0,0,0.7);
+    letter-spacing: -4px;
+    text-shadow:
+        0 8px 20px rgba(0,0,0,0.8),
+        0 20px 60px rgba(0,0,0,0.6);
 }
 
 .hero-subtitle {
+    margin: 18px auto 32px;
     font-size: clamp(18px, 3vw, 28px);
-    margin: 18px 0 30px;
-    opacity: 0.95;
+    font-weight: 600;
+    text-shadow: 0 4px 15px rgba(0,0,0,0.7);
 }
 
 .hero-button {
@@ -106,121 +110,195 @@ body {
     color: #071952;
     text-decoration: none;
     font-size: 19px;
-    font-weight: bold;
-    box-shadow: 0 10px 35px rgba(0,0,0,0.35);
-    transition: 0.3s;
+    font-weight: 900;
+    box-shadow: 0 15px 45px rgba(0,0,0,0.4);
+    transition: 0.3s ease;
 }
 
 .hero-button:hover {
-    transform: translateY(-4px) scale(1.03);
+    transform: translateY(-4px) scale(1.04);
 }
 
-/* ===== MAIN ===== */
+/* ================= NEWS BAR ================= */
+
+.news-bar {
+    position: relative;
+    z-index: 5;
+    overflow: hidden;
+    background: #020812;
+    border-top: 1px solid rgba(255,255,255,0.10);
+    border-bottom: 1px solid rgba(255,255,255,0.10);
+}
+
+.news-inner {
+    padding: 15px 0;
+    white-space: nowrap;
+    font-size: 15px;
+    font-weight: bold;
+    animation: newsMove 18s linear infinite;
+}
+
+/* ================= CONTAINER ================= */
 
 .container {
-    width: min(1050px, 92%);
+    width: min(1100px, 92%);
     margin: auto;
 }
 
 section {
-    padding: 70px 0;
+    padding: 80px 0;
 }
 
-.section-title {
-    font-size: 36px;
+.section-heading {
+    margin-bottom: 35px;
+}
+
+.section-kicker {
+    color: rgba(255,255,255,0.55);
+    font-size: 13px;
+    letter-spacing: 3px;
     margin-bottom: 10px;
 }
 
+.section-title {
+    margin: 0;
+    font-size: clamp(30px, 5vw, 44px);
+    font-weight: 900;
+}
+
 .section-description {
-    opacity: 0.75;
+    margin-top: 12px;
+    color: rgba(255,255,255,0.65);
     font-size: 17px;
 }
 
-/* ===== MATCH ===== */
+/* ================= MATCH CARD ================= */
 
 .match-card {
     position: relative;
     overflow: hidden;
-    margin: 20px auto;
-    padding: 45px 25px;
-    border-radius: 30px;
-    background: linear-gradient(
-        135deg,
-        rgba(255,255,255,0.13),
-        rgba(255,255,255,0.04)
-    );
-    border: 1px solid rgba(255,255,255,0.14);
-    box-shadow: 0 25px 70px rgba(0,0,0,0.3);
-    backdrop-filter: blur(15px);
+    padding: 55px 30px;
+    border-radius: 35px;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,0.14),
+            rgba(255,255,255,0.035)
+        );
+    border: 1px solid rgba(255,255,255,0.16);
+    box-shadow:
+        0 30px 80px rgba(0,0,0,0.38),
+        inset 0 1px 0 rgba(255,255,255,0.10);
+    backdrop-filter: blur(18px);
+}
+
+.match-card::before {
+    content: "RETURN LEG";
+    position: absolute;
+    top: 20px;
+    left: 25px;
+    font-size: 11px;
+    letter-spacing: 4px;
+    opacity: 0.25;
 }
 
 .match-label {
-    font-size: 15px;
-    opacity: 0.7;
-    letter-spacing: 2px;
+    color: rgba(255,255,255,0.55);
+    font-size: 13px;
+    letter-spacing: 4px;
 }
 
 .teams {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 30px;
-    margin: 35px 0;
+    gap: clamp(20px, 5vw, 70px);
+    margin: 45px 0;
 }
 
 .team {
-    font-size: clamp(27px, 5vw, 48px);
+    font-size: clamp(30px, 5vw, 58px);
     font-weight: 900;
+    white-space: nowrap;
 }
 
 .vs {
-    font-size: 20px;
-    opacity: 0.6;
+    width: 65px;
+    height: 65px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.18);
+    font-size: 21px;
+    font-weight: bold;
 }
 
 .match-note {
-    font-size: 16px;
-    opacity: 0.7;
+    color: rgba(255,255,255,0.55);
+    font-size: 15px;
 }
 
-/* ===== REGISTRATION ===== */
+/* ================= REGISTRATION ================= */
 
 .registration {
-    margin-top: 25px;
-    padding: 40px 25px;
-    border-radius: 28px;
-    background: rgba(0,0,0,0.22);
-    border: 1px solid rgba(255,255,255,0.1);
+    position: relative;
+    padding: 55px 25px;
+    border-radius: 35px;
+    background:
+        radial-gradient(
+            circle at top,
+            rgba(255,255,255,0.12),
+            transparent 55%
+        ),
+        rgba(0,0,0,0.24);
+    border: 1px solid rgba(255,255,255,0.12);
+    box-shadow: 0 30px 80px rgba(0,0,0,0.3);
 }
 
 .registration h2 {
-    font-size: 30px;
-    margin-top: 0;
+    margin: 0;
+    font-size: 34px;
+}
+
+.registration p {
+    color: rgba(255,255,255,0.7);
+    font-size: 17px;
+}
+
+.input-wrap {
+    margin-top: 28px;
 }
 
 input {
-    width: min(450px, 90%);
-    padding: 16px 18px;
-    border: none;
+    width: min(480px, 90%);
+    padding: 17px 20px;
+    border: 2px solid transparent;
     outline: none;
-    border-radius: 15px;
+    border-radius: 16px;
     font-size: 17px;
     text-align: center;
-    margin-top: 15px;
+    transition: 0.3s;
+}
+
+input:focus {
+    border-color: #0b666a;
 }
 
 .register-button {
     display: block;
     margin: 18px auto 0;
-    padding: 16px 32px;
+    padding: 17px 35px;
     border: none;
-    border-radius: 15px;
+    border-radius: 16px;
     background: white;
     color: #071952;
     font-size: 18px;
-    font-weight: bold;
+    font-weight: 900;
     cursor: pointer;
     transition: 0.3s;
+    box-shadow: 0 10px 35px rgba(0,0,0,0.3);
 }
 
 .register-button:hover {
@@ -234,28 +312,37 @@ input {
 
 #status {
     min-height: 45px;
-    margin-top: 18px;
+    margin-top: 20px;
     font-size: 17px;
+    line-height: 1.8;
 }
 
 #counter {
-    margin-top: 20px;
-    font-size: 23px;
+    display: inline-block;
+    margin-top: 18px;
+    padding: 11px 20px;
+    border-radius: 100px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    font-size: 18px;
     font-weight: bold;
 }
 
-/* ===== TICKET ===== */
+/* ================= PASSPORT ================= */
 
 .ticket {
     display: none;
     position: relative;
-    margin: 35px auto 0;
-    max-width: 650px;
-    padding: 30px;
-    background: linear-gradient(135deg, #ffffff, #eaf2f5);
+    overflow: hidden;
+    max-width: 700px;
+    margin: 40px auto 0;
+    padding: 34px;
     color: #071952;
-    border-radius: 25px;
-    box-shadow: 0 20px 55px rgba(0,0,0,0.4);
+    background:
+        linear-gradient(135deg, #ffffff, #e9f1f4);
+    border-radius: 28px;
+    box-shadow:
+        0 30px 70px rgba(0,0,0,0.45);
     animation: ticketIn 0.7s ease;
 }
 
@@ -263,66 +350,92 @@ input {
     display: block;
 }
 
+.ticket::before,
+.ticket::after {
+    content: "";
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background: #061936;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.ticket::before {
+    right: -18px;
+}
+
+.ticket::after {
+    left: -18px;
+}
+
 .ticket-top {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
     font-size: 24px;
 }
 
 .ticket-title {
-    font-size: 31px;
+    margin: 25px 0 5px;
+    font-size: 32px;
     font-weight: 900;
-    margin: 22px 0 8px;
 }
 
 .ticket-name {
-    font-size: 27px;
-    font-weight: bold;
+    font-size: 29px;
+    font-weight: 900;
     margin: 10px 0 25px;
 }
 
 .ticket-line {
-    border-top: 2px dashed rgba(7,25,82,0.35);
-    margin: 22px 0;
+    border-top: 2px dashed rgba(7,25,82,0.25);
+    margin: 25px 0;
 }
 
 .ticket-match {
-    font-size: 23px;
-    font-weight: bold;
+    font-size: 24px;
+    font-weight: 900;
 }
 
 .ticket-note {
-    opacity: 0.65;
+    margin-bottom: 0;
+    color: rgba(7,25,82,0.60);
 }
 
-/* ===== NEWS ===== */
+/* ================= MEDIA ================= */
 
-.news-bar {
-    overflow: hidden;
-    background: rgba(0,0,0,0.35);
-    border-top: 1px solid rgba(255,255,255,0.1);
-    border-bottom: 1px solid rgba(255,255,255,0.1);
+.media-box {
+    padding: 40px 25px;
+    border-radius: 30px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.10);
 }
 
-.news-inner {
-    padding: 15px;
-    font-size: 16px;
-    white-space: nowrap;
-    animation: newsMove 16s linear infinite;
+.media-box h3 {
+    margin-top: 0;
+    font-size: 25px;
 }
 
-/* ===== FOOTER ===== */
+.media-box p {
+    color: rgba(255,255,255,0.65);
+    line-height: 1.9;
+}
+
+/* ================= FOOTER ================= */
 
 footer {
-    padding: 35px 20px;
-    opacity: 0.65;
+    padding: 45px 20px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    color: rgba(255,255,255,0.5);
     font-size: 14px;
 }
 
-/* ===== ANIMATIONS ===== */
+/* ================= ANIMATIONS ================= */
 
 @keyframes fadeUp {
+
     from {
         opacity: 0;
         transform: translateY(30px);
@@ -332,21 +445,25 @@ footer {
         opacity: 1;
         transform: translateY(0);
     }
+
 }
 
 @keyframes ticketIn {
+
     from {
         opacity: 0;
-        transform: translateY(25px) scale(0.97);
+        transform: translateY(30px) scale(0.97);
     }
 
     to {
         opacity: 1;
         transform: translateY(0) scale(1);
     }
+
 }
 
 @keyframes newsMove {
+
     from {
         transform: translateX(100%);
     }
@@ -354,62 +471,62 @@ footer {
     to {
         transform: translateX(-100%);
     }
+
 }
 
-/* ===== MOBILE ===== */
+/* ================= MOBILE ================= */
 
 @media (max-width: 650px) {
 
     .hero {
-        aspect-ratio: 16 / 9;
-        min-height: 0;
-    }
-
-    .hero-content {
-        padding: 20px 15px;
-    }
-
-    .badge {
-        font-size: 12px;
-        padding: 7px 14px;
-        margin-bottom: 10px;
+        height: 75vh;
+        min-height: 470px;
     }
 
     .hero h1 {
-        font-size: clamp(38px, 11vw, 65px);
-        letter-spacing: -2px;
+        font-size: clamp(48px, 14vw, 75px);
+        letter-spacing: -3px;
     }
 
     .hero-subtitle {
-        font-size: 16px;
-        margin: 10px 0 18px;
+        font-size: 17px;
     }
 
     .hero-button {
-        padding: 12px 22px;
+        padding: 14px 25px;
         font-size: 16px;
     }
 
+    section {
+        padding: 60px 0;
+    }
+
     .teams {
-        gap: 12px;
-        flex-direction: column;
+        gap: 15px;
+    }
+
+    .team {
+        font-size: 28px;
     }
 
     .vs {
-        margin: -5px 0;
+        width: 52px;
+        height: 52px;
+        font-size: 17px;
     }
 
     .match-card {
-        padding: 35px 15px;
+        padding: 45px 15px;
     }
 
     .registration {
-        padding: 30px 15px;
+        padding: 40px 15px;
     }
 
     .ticket {
-        padding: 22px 17px;
+        padding: 28px 20px;
     }
+
 }
 
 </style>
@@ -417,6 +534,9 @@ footer {
 </head>
 
 <body>
+
+
+<!-- ================= HERO ================= -->
 
 <header class="hero">
 
@@ -449,19 +569,25 @@ footer {
 </header>
 
 
+<!-- ================= NEWS ================= -->
+
 <div class="news-bar">
 
     <div class="news-inner">
 
         🇰🇼 جواز الإياب مفتوح للجمهور — سجّل حضورك الآن 🎫
 
-        &nbsp;&nbsp;&nbsp; • &nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp; • &nbsp;&nbsp;
 
         المدرجات تناديكم 🇰🇼
 
-        &nbsp;&nbsp;&nbsp; • &nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp; • &nbsp;&nbsp;
 
         الكويت × روسيا 🇰🇼🇷🇺
+
+        &nbsp;&nbsp; • &nbsp;&nbsp;
+
+        العودة تبدأ من المدرجات 🔥
 
     </div>
 
@@ -471,20 +597,31 @@ footer {
 <main class="container">
 
 
+<!-- ================= MATCH ================= -->
+
 <section>
 
-    <div class="section-title">
-        ⚽ المواجهة
+    <div class="section-heading">
+
+        <div class="section-kicker">
+            THE RETURN
+        </div>
+
+        <h2 class="section-title">
+            ⚽ المواجهة
+        </h2>
+
+        <p class="section-description">
+            الإياب... فصل جديد من الحكاية 🇰🇼
+        </p>
+
     </div>
 
-    <p class="section-description">
-        صفحة المباراة الرسمية لجواز الإياب
-    </p>
 
     <div class="match-card">
 
         <div class="match-label">
-            MATCH DAY
+            RETURN LEG
         </div>
 
         <div class="teams">
@@ -494,7 +631,7 @@ footer {
             </div>
 
             <div class="vs">
-                ×
+                VS
             </div>
 
             <div class="team">
@@ -512,24 +649,48 @@ footer {
 </section>
 
 
+<!-- ================= REGISTRATION ================= -->
+
 <section id="registration">
+
+    <div class="section-heading">
+
+        <div class="section-kicker">
+            YOUR PASS
+        </div>
+
+        <h2 class="section-title">
+            🎫 احجز مكانك في الإياب
+        </h2>
+
+        <p class="section-description">
+            سجّل اسمك وأصدر جواز الإياب الخاص بك
+        </p>
+
+    </div>
+
 
     <div class="registration">
 
         <h2>
-            🎫 أصدر جواز الإياب
+            إصدار جواز الإياب
         </h2>
 
         <p>
             اكتب اسمك وانضم إلى جمهور الإياب 🇰🇼
         </p>
 
-        <input
-            type="text"
-            id="name"
-            placeholder="اكتب اسمك هنا"
-            maxlength="50"
-        >
+        <div class="input-wrap">
+
+            <input
+                type="text"
+                id="name"
+                placeholder="اكتب اسمك هنا"
+                maxlength="50"
+            >
+
+        </div>
+
 
         <button
             id="registerButton"
@@ -539,9 +700,11 @@ footer {
             🎟️ إصدار جواز الإياب
         </button>
 
+
         <div id="status">
             لم تسجل أي حضور حتى الآن.
         </div>
+
 
         <div id="counter">
             👥 عدد المسجلين: ...
@@ -549,6 +712,8 @@ footer {
 
     </div>
 
+
+    <!-- PASSPORT -->
 
     <div id="ticket" class="ticket">
 
@@ -564,20 +729,26 @@ footer {
 
         </div>
 
+
         <div class="ticket-line"></div>
+
 
         <div class="ticket-title">
             تم إصدار جوازك
         </div>
 
+
         <div id="ticketName" class="ticket-name">
         </div>
 
+
         <div class="ticket-line"></div>
+
 
         <div class="ticket-match">
             الكويت 🇰🇼 × روسيا 🇷🇺
         </div>
+
 
         <p class="ticket-note">
             جواز حضورك إلى الإياب ❤️
@@ -588,15 +759,37 @@ footer {
 </section>
 
 
+<!-- ================= MEDIA ================= -->
+
 <section>
 
-    <div class="section-title">
-        📰 المركز الإعلامي
+    <div class="section-heading">
+
+        <div class="section-kicker">
+            MEDIA CENTER
+        </div>
+
+        <h2 class="section-title">
+            📰 المركز الإعلامي
+        </h2>
+
     </div>
 
-    <p class="section-description">
-        هنا تبدأ الحكاية... وهنا يكتب الجمهور فصل الإياب.
-    </p>
+
+    <div class="media-box">
+
+        <h3>
+            الحكاية لم تنتهِ...
+        </h3>
+
+        <p>
+            هنا تبدأ رحلة الإياب، وهنا يجتمع الجمهور على موعد
+            مع ليلة جديدة من الحماس والانتماء.
+            <br>
+            🇰🇼 كل مقعد في المدرجات... جواز جديد في الحكاية.
+        </p>
+
+    </div>
 
 </section>
 
@@ -605,7 +798,13 @@ footer {
 
 
 <footer>
-    🇰🇼 جواز الإياب — معًا نحو الإياب
+
+    🇰🇼 جواز الإياب
+
+    <br><br>
+
+    معًا نحو الإياب ❤️
+
 </footer>
 
 
@@ -623,6 +822,8 @@ import {
 } from
 "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
 
+
+/* ================= FIREBASE ================= */
 
 const firebaseConfig = {
 
@@ -647,6 +848,8 @@ const app = initializeApp(firebaseConfig);
 
 const db = getFirestore(app);
 
+
+/* ================= COUNTER ================= */
 
 async function updateCounter() {
 
@@ -675,6 +878,8 @@ async function updateCounter() {
 
 }
 
+
+/* ================= REGISTRATION ================= */
 
 window.registerAttendance = async function() {
 
@@ -756,6 +961,8 @@ window.registerAttendance = async function() {
 
 };
 
+
+/* ================= START ================= */
 
 updateCounter();
 
