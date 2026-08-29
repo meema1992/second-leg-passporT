@@ -324,6 +324,7 @@ footer {
         opacity: 0;
         transform: translateY(30px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -335,6 +336,7 @@ footer {
         opacity: 0;
         transform: translateY(25px) scale(0.97);
     }
+
     to {
         opacity: 1;
         transform: translateY(0) scale(1);
@@ -345,6 +347,7 @@ footer {
     from {
         transform: translateX(100%);
     }
+
     to {
         transform: translateX(-100%);
     }
@@ -390,12 +393,12 @@ footer {
 
 <body>
 
-<!-- HERO -->
-
 <header class="hero">
 
     <video autoplay muted loop playsinline>
-        <source src="منتخب الكويت.mp4" type="video/mp4">
+
+        <source src="منتخب الكويت.MP4" type="video/mp4">
+
     </video>
 
     <div class="hero-content">
@@ -404,7 +407,9 @@ footer {
             🇰🇼 فعالية جواز الإياب
         </div>
 
-        <h1>جواز الإياب 🎫</h1>
+        <h1>
+            جواز الإياب 🎫
+        </h1>
 
         <p class="hero-subtitle">
             رحلة جديدة... مدرج واحد... وحلم واحد 🇰🇼
@@ -419,23 +424,27 @@ footer {
 </header>
 
 
-<!-- NEWS BAR -->
-
 <div class="news-bar">
+
     <div class="news-inner">
+
         🇰🇼 جواز الإياب مفتوح للجمهور — سجّل حضورك الآن 🎫
+
         &nbsp;&nbsp;&nbsp; • &nbsp;&nbsp;&nbsp;
+
         المدرجات تناديكم 🇰🇼
+
         &nbsp;&nbsp;&nbsp; • &nbsp;&nbsp;&nbsp;
+
         الكويت × روسيا 🇰🇼🇷🇺
+
     </div>
+
 </div>
 
 
 <main class="container">
 
-
-<!-- MATCH -->
 
 <section>
 
@@ -470,15 +479,13 @@ footer {
         </div>
 
         <div class="match-note">
-            🏟️ الموعد سيتم الإعلان عنه لاحقًا
+            🎫 تفاصيل المباراة سيتم الإعلان عنها لاحقًا
         </div>
 
     </div>
 
 </section>
 
-
-<!-- REGISTRATION -->
 
 <section id="registration">
 
@@ -518,8 +525,6 @@ footer {
     </div>
 
 
-    <!-- TICKET -->
-
     <div id="ticket" class="ticket">
 
         <div class="ticket-top">
@@ -558,8 +563,6 @@ footer {
 </section>
 
 
-<!-- MEDIA -->
-
 <section>
 
     <div class="section-title">
@@ -596,16 +599,22 @@ import {
 "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
 
 
-/* ===== FIREBASE ===== */
-
 const firebaseConfig = {
+
     apiKey: "AIzaSyAXCJeK9_FAd6lR0ctfdm_kcaVI-ys52dw",
+
     authDomain: "return-ticket.firebaseapp.com",
+
     projectId: "return-ticket",
+
     storageBucket: "return-ticket.firebasestorage.app",
+
     messagingSenderId: "714749786440",
+
     appId: "1:714749786440:web:8a554f291bba83acdf5b7d",
+
     measurementId: "G-HL7MCWQQZS"
+
 };
 
 
@@ -613,8 +622,6 @@ const app = initializeApp(firebaseConfig);
 
 const db = getFirestore(app);
 
-
-/* ===== COUNTER ===== */
 
 async function updateCounter() {
 
@@ -630,17 +637,19 @@ async function updateCounter() {
             "👥 عدد المسجلين: " +
             snapshot.data().count;
 
-    } catch (error) {
+    }
+
+    catch (error) {
 
         console.error(error);
 
         document.getElementById("counter").innerText =
             "👥 عدد المسجلين: غير متاح حاليًا";
+
     }
+
 }
 
-
-/* ===== REGISTRATION ===== */
 
 window.registerAttendance = async function() {
 
@@ -663,6 +672,7 @@ window.registerAttendance = async function() {
             "⚠️ اكتبي اسمك أولًا ❤️";
 
         return;
+
     }
 
 
@@ -692,29 +702,35 @@ window.registerAttendance = async function() {
         document.getElementById("ticketName").innerText =
             name;
 
-        document.getElementById("ticket").classList.add("show");
+
+        document.getElementById("ticket")
+            .classList.add("show");
+
 
         nameInput.value = "";
 
+
         await updateCounter();
 
+    }
 
-    } catch (error) {
+    catch (error) {
 
         console.error(error);
 
         status.innerHTML =
             "❌ ما قدرنا نصدر جوازك الآن.<br>حاولي مرة ثانية.";
 
-    } finally {
+    }
+
+    finally {
 
         button.disabled = false;
+
     }
 
 };
 
-
-/* ===== START COUNTER ===== */
 
 updateCounter();
 
