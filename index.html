@@ -22,7 +22,7 @@ body {
     margin: 0;
     font-family: Arial, Tahoma, sans-serif;
     background:
-        radial-gradient(circle at top, #163d68 0%, transparent 35%),
+        radial-gradient(circle at top, #173d68 0%, transparent 35%),
         linear-gradient(145deg, #020812, #071952 50%, #031f2d);
     color: white;
     text-align: center;
@@ -60,8 +60,8 @@ body {
         linear-gradient(
             180deg,
             rgba(0,0,0,0.05),
-            rgba(0,0,0,0.30) 45%,
-            rgba(2,8,18,0.95)
+            rgba(0,0,0,0.35) 45%,
+            rgba(2,8,18,0.96)
         );
 }
 
@@ -69,7 +69,6 @@ body {
     position: relative;
     z-index: 2;
     width: min(900px, 90%);
-    animation: fadeUp 1s ease;
 }
 
 .badge {
@@ -107,11 +106,6 @@ body {
     font-size: 19px;
     font-weight: 900;
     box-shadow: 0 12px 40px rgba(0,0,0,0.45);
-    transition: 0.3s;
-}
-
-.hero-button:hover {
-    transform: translateY(-4px) scale(1.04);
 }
 
 /* ================= NEWS ================= */
@@ -290,132 +284,6 @@ input:focus {
     font-weight: bold;
 }
 
-/* ================= PASSPORT ================= */
-
-.ticket {
-    display: none;
-    position: relative;
-    max-width: 720px;
-    margin: 45px auto 0;
-    padding: 8px;
-    border-radius: 30px;
-    background: linear-gradient(
-        135deg,
-        #f1d36a,
-        #a77b16,
-        #f4d96b,
-        #9b7115
-    );
-    box-shadow:
-        0 30px 90px rgba(0,0,0,0.55),
-        0 0 35px rgba(212,175,55,0.20);
-    animation: passportIn 0.8s ease;
-}
-
-.ticket.show {
-    display: block;
-}
-
-.ticket-inner {
-    position: relative;
-    overflow: hidden;
-    padding: 38px 30px;
-    border-radius: 23px;
-    background:
-        radial-gradient(
-            circle at top left,
-            rgba(255,255,255,0.08),
-            transparent 35%
-        ),
-        linear-gradient(145deg, #071a3b, #020b1b);
-    border: 1px solid rgba(255,255,255,0.12);
-}
-
-.ticket-inner::before {
-    content: "🇰🇼";
-    position: absolute;
-    left: -20px;
-    bottom: -45px;
-    font-size: 170px;
-    opacity: 0.035;
-}
-
-.ticket-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: #e6c65c;
-    font-size: 25px;
-    position: relative;
-    z-index: 1;
-}
-
-.ticket-small {
-    color: rgba(255,255,255,0.55);
-    font-size: 11px;
-    letter-spacing: 3px;
-    margin-top: 25px;
-}
-
-.ticket-title {
-    margin: 8px 0;
-    color: #f0cf55;
-    font-size: clamp(32px, 7vw, 52px);
-    font-weight: 900;
-}
-
-.ticket-subtitle {
-    color: rgba(255,255,255,0.65);
-    margin-bottom: 25px;
-}
-
-.ticket-name-label {
-    color: rgba(255,255,255,0.55);
-    font-size: 13px;
-}
-
-.ticket-name {
-    margin: 8px 0 28px;
-    color: #ffffff;
-    font-size: clamp(28px, 6vw, 40px);
-    font-weight: 900;
-}
-
-.ticket-line {
-    height: 1px;
-    background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(212,175,55,0.8),
-        transparent
-    );
-    margin: 25px 0;
-}
-
-.ticket-match {
-    color: #ffffff;
-    font-size: clamp(22px, 5vw, 30px);
-    font-weight: 900;
-}
-
-.ticket-status {
-    display: inline-block;
-    margin-top: 25px;
-    padding: 9px 18px;
-    border-radius: 100px;
-    color: #071952;
-    background: #d4af37;
-    font-size: 14px;
-    font-weight: 900;
-}
-
-.ticket-number {
-    margin-top: 25px;
-    color: rgba(255,255,255,0.5);
-    font-size: 12px;
-    letter-spacing: 2px;
-}
-
 /* ================= MEDIA ================= */
 
 .media-box {
@@ -443,18 +311,366 @@ footer {
     color: rgba(255,255,255,0.45);
 }
 
-/* ================= ANIMATIONS ================= */
+/* ================================================= */
+/* ================= PASSPORT MODAL ================ */
+/* ================================================= */
 
-@keyframes fadeUp {
+.passport-overlay {
+
+    display: none;
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 9999;
+
+    background:
+        rgba(1,5,15,0.88);
+
+    backdrop-filter: blur(14px);
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 20px;
+
+}
+
+.passport-overlay.show {
+
+    display: flex;
+
+    animation: overlayIn 0.35s ease;
+
+}
+
+.passport-window {
+
+    position: relative;
+
+    width: min(650px, 96vw);
+
+    max-height: 94vh;
+
+    overflow-y: auto;
+
+    animation: passportIn 0.65s cubic-bezier(.2,.8,.2,1);
+
+}
+
+/* ================= GOLD FRAME ================= */
+
+.passport-card {
+
+    position: relative;
+
+    padding: 7px;
+
+    border-radius: 32px;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            #fff0a0,
+            #b88918,
+            #f5d765,
+            #8c6510,
+            #e8c34f
+        );
+
+    box-shadow:
+
+        0 35px 100px rgba(0,0,0,0.7),
+
+        0 0 60px rgba(212,175,55,0.25);
+
+}
+
+/* ================= INNER PASSPORT ================= */
+
+.passport-inner {
+
+    position: relative;
+
+    overflow: hidden;
+
+    border-radius: 25px;
+
+    padding: 38px 30px;
+
+    background:
+
+        radial-gradient(
+            circle at 15% 10%,
+            rgba(212,175,55,0.15),
+            transparent 28%
+        ),
+
+        radial-gradient(
+            circle at 90% 90%,
+            rgba(212,175,55,0.08),
+            transparent 25%
+        ),
+
+        linear-gradient(
+            145deg,
+            #0a2147,
+            #020916 65%,
+            #071936
+        );
+
+    border: 1px solid rgba(255,255,255,0.12);
+
+}
+
+/* Decorative lines */
+
+.passport-inner::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 15px;
+
+    border: 1px solid rgba(212,175,55,0.18);
+
+    border-radius: 18px;
+
+    pointer-events: none;
+
+}
+
+.passport-inner::after {
+
+    content: "🇰🇼";
+
+    position: absolute;
+
+    left: -35px;
+
+    bottom: -55px;
+
+    font-size: 190px;
+
+    opacity: 0.035;
+
+    pointer-events: none;
+
+}
+
+/* ================= CLOSE ================= */
+
+.close-passport {
+
+    position: absolute;
+
+    top: 17px;
+
+    left: 17px;
+
+    z-index: 10;
+
+    width: 38px;
+
+    height: 38px;
+
+    border-radius: 50%;
+
+    border: 1px solid rgba(212,175,55,0.4);
+
+    background: rgba(0,0,0,0.35);
+
+    color: #e6c65c;
+
+    font-size: 22px;
+
+    cursor: pointer;
+
+}
+
+/* ================= PASSPORT CONTENT ================= */
+
+.passport-top {
+
+    position: relative;
+
+    z-index: 2;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    color: #e8c657;
+
+    font-size: 25px;
+
+}
+
+.passport-code {
+
+    margin-top: 25px;
+
+    color: rgba(255,255,255,0.45);
+
+    font-size: 11px;
+
+    letter-spacing: 4px;
+
+}
+
+.passport-heading {
+
+    margin: 8px 0 5px;
+
+    color: #f0cf55;
+
+    font-size: clamp(35px, 8vw, 55px);
+
+    font-weight: 900;
+
+}
+
+.passport-subheading {
+
+    color: rgba(255,255,255,0.65);
+
+    font-size: 15px;
+
+}
+
+.passport-divider {
+
+    height: 1px;
+
+    margin: 28px 0;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(212,175,55,0.8),
+            transparent
+        );
+
+}
+
+.passport-label {
+
+    color: rgba(255,255,255,0.45);
+
+    font-size: 13px;
+
+}
+
+.passport-name {
+
+    margin: 10px 0 25px;
+
+    color: white;
+
+    font-size: clamp(28px, 7vw, 43px);
+
+    font-weight: 900;
+
+    word-break: break-word;
+
+}
+
+.passport-match {
+
+    color: white;
+
+    font-size: clamp(22px, 5vw, 30px);
+
+    font-weight: 900;
+
+}
+
+.passport-approved {
+
+    display: inline-block;
+
+    margin-top: 25px;
+
+    padding: 10px 20px;
+
+    border-radius: 100px;
+
+    background: #d4af37;
+
+    color: #071952;
+
+    font-size: 14px;
+
+    font-weight: 900;
+
+}
+
+.passport-number {
+
+    margin-top: 22px;
+
+    color: rgba(255,255,255,0.42);
+
+    font-size: 12px;
+
+    letter-spacing: 2px;
+
+}
+
+/* ================= DOWNLOAD ================= */
+
+.download-button {
+
+    display: block;
+
+    width: 100%;
+
+    margin-top: 25px;
+
+    padding: 16px;
+
+    border: none;
+
+    border-radius: 15px;
+
+    background: white;
+
+    color: #071952;
+
+    font-size: 17px;
+
+    font-weight: 900;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+
+}
+
+.download-button:hover {
+
+    transform: translateY(-2px);
+
+}
+
+/* ================= ANIMATION ================= */
+
+@keyframes overlayIn {
 
     from {
         opacity: 0;
-        transform: translateY(30px);
     }
 
     to {
         opacity: 1;
-        transform: translateY(0);
     }
 
 }
@@ -462,13 +678,25 @@ footer {
 @keyframes passportIn {
 
     from {
+
         opacity: 0;
-        transform: translateY(35px) scale(0.94);
+
+        transform:
+            translateY(45px)
+            scale(0.92)
+            rotateX(8deg);
+
     }
 
     to {
+
         opacity: 1;
-        transform: translateY(0) scale(1);
+
+        transform:
+            translateY(0)
+            scale(1)
+            rotateX(0);
+
     }
 
 }
@@ -490,38 +718,58 @@ footer {
 @media (max-width: 650px) {
 
     .hero {
+
         height: 75vh;
+
         min-height: 470px;
+
     }
 
     .hero h1 {
-        font-size: clamp(48px, 14vw, 75px);
+
+        font-size:
+            clamp(48px, 14vw, 75px);
+
     }
 
     .teams {
+
         flex-direction: column;
+
         gap: 15px;
+
     }
 
     .team {
+
         font-size: 30px;
+
     }
 
     .vs {
+
         width: 52px;
+
         height: 52px;
+
     }
 
     .match-card {
+
         padding: 45px 15px;
+
     }
 
     .registration {
+
         padding: 40px 15px;
+
     }
 
-    .ticket-inner {
+    .passport-inner {
+
         padding: 30px 20px;
+
     }
 
 }
@@ -529,6 +777,7 @@ footer {
 </style>
 
 </head>
+
 
 <body>
 
@@ -543,21 +792,28 @@ footer {
 
     </video>
 
+
     <div class="hero-content">
 
         <div class="badge">
             🇰🇼 فعالية جواز الإياب
         </div>
 
+
         <h1>
             جواز الإياب 🎫
         </h1>
+
 
         <p class="hero-subtitle">
             رحلة جديدة... مدرج واحد... وحلم واحد
         </p>
 
-        <a href="#registration" class="hero-button">
+
+        <a
+            href="#registration"
+            class="hero-button"
+        >
             🎟️ إصدار جواز الإياب
         </a>
 
@@ -602,9 +858,11 @@ footer {
         THE RETURN
     </div>
 
+
     <h2 class="section-title">
         ⚽ المواجهة
     </h2>
+
 
     <p class="section-description">
         الإياب... فصل جديد من الحكاية 🇰🇼
@@ -617,21 +875,25 @@ footer {
             RETURN LEG
         </div>
 
+
         <div class="teams">
 
             <div class="team">
                 🇰🇼 الكويت
             </div>
 
+
             <div class="vs">
                 VS
             </div>
+
 
             <div class="team">
                 روسيا 🇷🇺
             </div>
 
         </div>
+
 
         <div class="match-note">
             🎫 تفاصيل المباراة سيتم الإعلان عنها لاحقًا
@@ -650,9 +912,11 @@ footer {
         YOUR PASS
     </div>
 
+
     <h2 class="section-title">
         🎫 احجز مكانك في الإياب
     </h2>
+
 
     <p class="section-description">
         سجّل اسمك وأصدر جواز الإياب الخاص بك
@@ -664,6 +928,7 @@ footer {
         <h2>
             إصدار جواز الإياب
         </h2>
+
 
         <p>
             اكتب اسمك وانضم إلى جمهور الإياب 🇰🇼
@@ -698,74 +963,6 @@ footer {
 
     </div>
 
-
-    <!-- ================= PASSPORT ================= -->
-
-    <div id="ticket" class="ticket">
-
-        <div class="ticket-inner">
-
-            <div class="ticket-top">
-
-                <span>🇰🇼</span>
-
-                <strong>
-                    جواز الإياب
-                </strong>
-
-                <span>🎫</span>
-
-            </div>
-
-
-            <div class="ticket-small">
-                RETURN PASS • 2026
-            </div>
-
-
-            <div class="ticket-title">
-                جواز الإياب
-            </div>
-
-
-            <div class="ticket-subtitle">
-                تم اعتماد حضورك رسميًا
-            </div>
-
-
-            <div class="ticket-line"></div>
-
-
-            <div class="ticket-name-label">
-                حامل الجواز
-            </div>
-
-
-            <div id="ticketName" class="ticket-name">
-            </div>
-
-
-            <div class="ticket-line"></div>
-
-
-            <div class="ticket-match">
-                الكويت 🇰🇼 × روسيا 🇷🇺
-            </div>
-
-
-            <div class="ticket-status">
-                ✓ حضور معتمد
-            </div>
-
-
-            <div id="ticketNumber" class="ticket-number">
-                RETURN PASS
-            </div>
-
-        </div>
-
-    </div>
-
 </section>
 
 
@@ -776,6 +973,7 @@ footer {
     <div class="section-kicker">
         MEDIA CENTER
     </div>
+
 
     <h2 class="section-title">
         📰 المركز الإعلامي
@@ -788,11 +986,16 @@ footer {
             الحكاية لم تنتهِ...
         </h3>
 
+
         <p>
+
             هنا تبدأ رحلة الإياب، وهنا يجتمع الجمهور
             على موعد مع ليلة جديدة من الحماس والانتماء.
+
             <br>
+
             🇰🇼 كل اسم يُسجّل... فصل جديد في الحكاية.
+
         </p>
 
     </div>
@@ -814,6 +1017,117 @@ footer {
 </footer>
 
 
+<!-- ================================================= */
+/* ================= PASSPORT POPUP ================== */
+/* ================================================= -->
+
+<div
+    id="passportOverlay"
+    class="passport-overlay"
+>
+
+    <div class="passport-window">
+
+        <div class="passport-card">
+
+            <div class="passport-inner">
+
+
+                <button
+                    class="close-passport"
+                    onclick="closePassport()"
+                >
+                    ×
+                </button>
+
+
+                <div class="passport-top">
+
+                    <span>
+                        🇰🇼
+                    </span>
+
+
+                    <strong>
+                        جواز الإياب
+                    </strong>
+
+
+                    <span>
+                        🎫
+                    </span>
+
+                </div>
+
+
+                <div class="passport-code">
+                    RETURN PASS • KUWAIT
+                </div>
+
+
+                <div class="passport-heading">
+                    جواز الإياب
+                </div>
+
+
+                <div class="passport-subheading">
+                    تم اعتماد حضورك رسميًا
+                </div>
+
+
+                <div class="passport-divider"></div>
+
+
+                <div class="passport-label">
+                    حامل الجواز
+                </div>
+
+
+                <div
+                    id="ticketName"
+                    class="passport-name"
+                >
+                </div>
+
+
+                <div class="passport-divider"></div>
+
+
+                <div class="passport-match">
+                    الكويت 🇰🇼 × روسيا 🇷🇺
+                </div>
+
+
+                <div class="passport-approved">
+                    ✓ حضور معتمد
+                </div>
+
+
+                <div
+                    id="ticketNumber"
+                    class="passport-number"
+                >
+                    RETURN PASS
+                </div>
+
+
+                <button
+                    class="download-button"
+                    onclick="downloadPassport()"
+                >
+                    ⬇️ تحميل جواز الإياب
+                </button>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
 <!-- ================= FIREBASE ================= -->
 
 <script type="module">
@@ -833,26 +1147,36 @@ import {
 
 const firebaseConfig = {
 
-    apiKey: "AIzaSyAXCJeK9_FAd6lR0ctfdm_kcaVI-ys52dw",
+    apiKey:
+        "AIzaSyAXCJeK9_FAd6lR0ctfdm_kcaVI-ys52dw",
 
-    authDomain: "return-ticket.firebaseapp.com",
+    authDomain:
+        "return-ticket.firebaseapp.com",
 
-    projectId: "return-ticket",
+    projectId:
+        "return-ticket",
 
-    storageBucket: "return-ticket.firebasestorage.app",
+    storageBucket:
+        "return-ticket.firebasestorage.app",
 
-    messagingSenderId: "714749786440",
+    messagingSenderId:
+        "714749786440",
 
-    appId: "1:714749786440:web:8a554f291bba83acdf5b7d",
+    appId:
+        "1:714749786440:web:8a554f291bba83acdf5b7d",
 
-    measurementId: "G-HL7MCWQQZS"
+    measurementId:
+        "G-HL7MCWQQZS"
 
 };
 
 
-const app = initializeApp(firebaseConfig);
+const app =
+    initializeApp(firebaseConfig);
 
-const db = getFirestore(app);
+
+const db =
+    getFirestore(app);
 
 
 /* ================= COUNTER ================= */
@@ -862,14 +1186,23 @@ async function updateCounter() {
     try {
 
         const participantsRef =
-            collection(db, "participants");
+            collection(
+                db,
+                "participants"
+            );
+
 
         const snapshot =
-            await getCountFromServer(participantsRef);
+            await getCountFromServer(
+                participantsRef
+            );
 
-        document.getElementById("counter").innerText =
-            "👥 عدد المسجلين: " +
-            snapshot.data().count;
+
+        document
+            .getElementById("counter")
+            .innerText =
+                "👥 عدد المسجلين: " +
+                snapshot.data().count;
 
     }
 
@@ -877,8 +1210,11 @@ async function updateCounter() {
 
         console.error(error);
 
-        document.getElementById("counter").innerText =
-            "👥 عدد المسجلين: غير متاح حاليًا";
+
+        document
+            .getElementById("counter")
+            .innerText =
+                "👥 عدد المسجلين: غير متاح حاليًا";
 
     }
 
@@ -887,106 +1223,170 @@ async function updateCounter() {
 
 /* ================= REGISTRATION ================= */
 
-window.registerAttendance = async function() {
+window.registerAttendance =
+    async function() {
 
-    const nameInput =
-        document.getElementById("name");
-
-    const button =
-        document.getElementById("registerButton");
-
-    const status =
-        document.getElementById("status");
-
-    const name =
-        nameInput.value.trim();
+        const nameInput =
+            document.getElementById("name");
 
 
-    if (!name) {
-
-        status.innerHTML =
-            "⚠️ اكتبي اسمك أولًا ❤️";
-
-        return;
-
-    }
-
-
-    button.disabled = true;
-
-    status.innerHTML =
-        "⏳ جارٍ إصدار جوازك...";
-
-
-    try {
-
-        await addDoc(
-            collection(db, "participants"),
-            {
-                name: name,
-                createdAt: serverTimestamp()
-            }
-        );
-
-
-        status.innerHTML =
-            "✅ تم إصدار جواز الإياب يا " +
-            name +
-            "!<br>🇰🇼 ننتظرك في المدرجات!";
-
-
-        document.getElementById("ticketName").innerText =
-            name;
-
-
-        /*
-         * رقم الجواز يعتمد على العدد الحالي
-         */
-
-        const countSnapshot =
-            await getCountFromServer(
-                collection(db, "participants")
+        const button =
+            document.getElementById(
+                "registerButton"
             );
 
 
-        const passportNumber =
-            String(countSnapshot.data().count)
+        const status =
+            document.getElementById(
+                "status"
+            );
+
+
+        const name =
+            nameInput.value.trim();
+
+
+        if (!name) {
+
+            status.innerHTML =
+                "⚠️ اكتبي اسمك أولًا ❤️";
+
+            return;
+
+        }
+
+
+        button.disabled = true;
+
+
+        status.innerHTML =
+            "⏳ جارٍ إصدار جوازك...";
+
+
+        try {
+
+            await addDoc(
+
+                collection(
+                    db,
+                    "participants"
+                ),
+
+                {
+
+                    name: name,
+
+                    createdAt:
+                        serverTimestamp()
+
+                }
+
+            );
+
+
+            status.innerHTML =
+                "✅ تم إصدار جواز الإياب يا " +
+                name +
+                "!";
+
+
+            document
+                .getElementById(
+                    "ticketName"
+                )
+                .innerText =
+                    name;
+
+
+            const countSnapshot =
+                await getCountFromServer(
+                    collection(
+                        db,
+                        "participants"
+                    )
+                );
+
+
+            const passportNumber =
+                String(
+                    countSnapshot
+                        .data()
+                        .count
+                )
                 .padStart(4, "0");
 
 
-        document.getElementById("ticketNumber").innerText =
-            "RETURN PASS • RT-" +
-            passportNumber;
+            document
+                .getElementById(
+                    "ticketNumber"
+                )
+                .innerText =
+                    "RETURN PASS • RT-" +
+                    passportNumber;
 
 
-        document.getElementById("ticket")
-            .classList.add("show");
+            /*
+             * إظهار الجواز فوق الشاشة مباشرة
+             */
+
+            document
+                .getElementById(
+                    "passportOverlay"
+                )
+                .classList.add("show");
 
 
-        nameInput.value = "";
+            nameInput.value = "";
 
 
-        await updateCounter();
+            await updateCounter();
+
+        }
+
+        catch (error) {
+
+            console.error(error);
 
 
-    }
+            status.innerHTML =
+                "❌ ما قدرنا نصدر جوازك الآن.<br>" +
+                "حاولي مرة ثانية.";
 
-    catch (error) {
+        }
 
-        console.error(error);
+        finally {
 
-        status.innerHTML =
-            "❌ ما قدرنا نصدر جوازك الآن.<br>حاولي مرة ثانية.";
+            button.disabled = false;
 
-    }
+        }
 
-    finally {
+    };
 
-        button.disabled = false;
 
-    }
+/* ================= CLOSE PASSPORT ================= */
 
-};
+window.closePassport =
+    function() {
+
+        document
+            .getElementById(
+                "passportOverlay"
+            )
+            .classList.remove("show");
+
+    };
+
+
+/* ================= DOWNLOAD ================= */
+
+window.downloadPassport =
+    function() {
+
+        alert(
+            "ميزة تحميل الجواز سنجهزها في الخطوة التالية 🎫🇰🇼"
+        );
+
+    };
 
 
 /* ================= START ================= */
