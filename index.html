@@ -47,7 +47,8 @@ body {
     inset: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
+    background: #020812;
 }
 
 .hero::after {
@@ -57,9 +58,10 @@ body {
     background:
         linear-gradient(
             to bottom,
-            rgba(0,0,0,0.25),
-            rgba(2,8,18,0.82)
+            rgba(0,0,0,0.15),
+            rgba(2,8,18,0.80)
         );
+    pointer-events: none;
 }
 
 .hero-content {
