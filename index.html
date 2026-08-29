@@ -6,104 +6,258 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>جواز الإياب</title>
+<title>جواز الإياب 🇰🇼</title>
 
 <style>
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #071952, #0B666A);
+    font-family: Arial, Tahoma, sans-serif;
+    background:
+        radial-gradient(circle at top, #123b68 0%, transparent 45%),
+        linear-gradient(145deg, #020b18, #071952 45%, #063b45);
     color: white;
     text-align: center;
     min-height: 100vh;
-    padding: 40px 20px;
+    overflow-x: hidden;
 }
 
+/* ===== HERO ===== */
+
+.hero {
+    position: relative;
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: #020812;
+}
+
+.hero video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(0,0,0,0.25),
+            rgba(2,8,18,0.82)
+        );
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 30px 20px;
+    max-width: 900px;
+    animation: fadeUp 1.2s ease;
+}
+
+.badge {
+    display: inline-block;
+    padding: 9px 18px;
+    border: 1px solid rgba(255,255,255,0.4);
+    border-radius: 50px;
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(10px);
+    font-size: 15px;
+    margin-bottom: 20px;
+}
+
+.hero h1 {
+    font-size: clamp(55px, 10vw, 110px);
+    margin: 0;
+    font-weight: 900;
+    letter-spacing: -3px;
+    text-shadow: 0 10px 35px rgba(0,0,0,0.7);
+}
+
+.hero-subtitle {
+    font-size: clamp(18px, 3vw, 28px);
+    margin: 18px 0 30px;
+    opacity: 0.95;
+}
+
+.hero-button {
+    display: inline-block;
+    padding: 17px 35px;
+    border-radius: 18px;
+    background: white;
+    color: #071952;
+    text-decoration: none;
+    font-size: 19px;
+    font-weight: bold;
+    box-shadow: 0 10px 35px rgba(0,0,0,0.35);
+    transition: 0.3s;
+}
+
+.hero-button:hover {
+    transform: translateY(-4px) scale(1.03);
+}
+
+/* ===== MAIN ===== */
+
 .container {
-    max-width: 600px;
+    width: min(1050px, 92%);
     margin: auto;
 }
 
-h1 {
-    font-size: 42px;
+section {
+    padding: 70px 0;
+}
+
+.section-title {
+    font-size: 36px;
     margin-bottom: 10px;
 }
 
-.subtitle {
+.section-description {
+    opacity: 0.75;
+    font-size: 17px;
+}
+
+/* ===== MATCH ===== */
+
+.match-card {
+    position: relative;
+    overflow: hidden;
+    margin: 20px auto;
+    padding: 45px 25px;
+    border-radius: 30px;
+    background: linear-gradient(
+        135deg,
+        rgba(255,255,255,0.13),
+        rgba(255,255,255,0.04)
+    );
+    border: 1px solid rgba(255,255,255,0.14);
+    box-shadow: 0 25px 70px rgba(0,0,0,0.3);
+    backdrop-filter: blur(15px);
+}
+
+.match-label {
+    font-size: 15px;
+    opacity: 0.7;
+    letter-spacing: 2px;
+}
+
+.teams {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin: 35px 0;
+}
+
+.team {
+    font-size: clamp(27px, 5vw, 48px);
+    font-weight: 900;
+}
+
+.vs {
     font-size: 20px;
-    opacity: 0.9;
+    opacity: 0.6;
 }
 
-.card {
-    background: rgba(255,255,255,0.12);
-    border-radius: 25px;
-    padding: 30px 20px;
-    margin-top: 30px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+.match-note {
+    font-size: 16px;
+    opacity: 0.7;
 }
 
-.match {
-    font-size: 28px;
-    font-weight: bold;
-    margin: 20px 0;
+/* ===== REGISTRATION ===== */
+
+.registration {
+    margin-top: 25px;
+    padding: 40px 25px;
+    border-radius: 28px;
+    background: rgba(0,0,0,0.22);
+    border: 1px solid rgba(255,255,255,0.1);
 }
 
-.info {
-    font-size: 19px;
-    margin: 10px 0;
+.registration h2 {
+    font-size: 30px;
+    margin-top: 0;
 }
 
 input {
-    width: 80%;
-    max-width: 400px;
-    box-sizing: border-box;
-    padding: 14px;
+    width: min(450px, 90%);
+    padding: 16px 18px;
     border: none;
-    border-radius: 12px;
+    outline: none;
+    border-radius: 15px;
     font-size: 17px;
     text-align: center;
     margin-top: 15px;
 }
 
-button {
-    background: white;
-    color: #071952;
+.register-button {
+    display: block;
+    margin: 18px auto 0;
+    padding: 16px 32px;
     border: none;
     border-radius: 15px;
-    padding: 15px 30px;
+    background: white;
+    color: #071952;
     font-size: 18px;
     font-weight: bold;
     cursor: pointer;
-    margin-top: 20px;
+    transition: 0.3s;
 }
 
-button:hover {
-    transform: scale(1.05);
+.register-button:hover {
+    transform: translateY(-3px);
 }
 
-button:disabled {
+.register-button:disabled {
     opacity: 0.6;
     cursor: wait;
 }
 
 #status {
-    font-size: 18px;
-    margin-top: 15px;
+    min-height: 45px;
+    margin-top: 18px;
+    font-size: 17px;
 }
 
 #counter {
-    font-size: 20px;
-    font-weight: bold;
     margin-top: 20px;
+    font-size: 23px;
+    font-weight: bold;
 }
 
+/* ===== TICKET ===== */
+
 .ticket {
-    margin-top: 35px;
-    padding: 25px 20px;
-    background: white;
+    display: none;
+    position: relative;
+    margin: 35px auto 0;
+    max-width: 650px;
+    padding: 30px;
+    background: linear-gradient(135deg, #ffffff, #eaf2f5);
     color: #071952;
-    border-radius: 20px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    border-radius: 25px;
+    box-shadow: 0 20px 55px rgba(0,0,0,0.4);
+    animation: ticketIn 0.7s ease;
+}
+
+.ticket.show {
+    display: block;
 }
 
 .ticket-top {
@@ -113,99 +267,318 @@ button:disabled {
     font-size: 24px;
 }
 
-.ticket-line {
-    border-top: 2px dashed #071952;
-    margin: 20px 0;
+.ticket-title {
+    font-size: 31px;
+    font-weight: 900;
+    margin: 22px 0 8px;
 }
 
-.ticket h2 {
-    font-size: 28px;
-    margin: 10px 0;
+.ticket-name {
+    font-size: 27px;
+    font-weight: bold;
+    margin: 10px 0 25px;
+}
+
+.ticket-line {
+    border-top: 2px dashed rgba(7,25,82,0.35);
+    margin: 22px 0;
 }
 
 .ticket-match {
-    font-size: 22px;
+    font-size: 23px;
     font-weight: bold;
 }
 
 .ticket-note {
-    opacity: 0.7;
-    margin-bottom: 0;
+    opacity: 0.65;
 }
+
+/* ===== NEWS ===== */
+
+.news-bar {
+    overflow: hidden;
+    background: rgba(0,0,0,0.35);
+    border-top: 1px solid rgba(255,255,255,0.1);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.news-inner {
+    padding: 15px;
+    font-size: 16px;
+    white-space: nowrap;
+    animation: newsMove 16s linear infinite;
+}
+
+/* ===== FOOTER ===== */
+
+footer {
+    padding: 35px 20px;
+    opacity: 0.65;
+    font-size: 14px;
+}
+
+/* ===== ANIMATIONS ===== */
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes ticketIn {
+    from {
+        opacity: 0;
+        transform: translateY(25px) scale(0.97);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes newsMove {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+/* ===== MOBILE ===== */
+
+@media (max-width: 650px) {
+
+    .hero {
+        min-height: 75vh;
+    }
+
+    .hero h1 {
+        letter-spacing: -2px;
+    }
+
+    .teams {
+        gap: 12px;
+        flex-direction: column;
+    }
+
+    .vs {
+        margin: -5px 0;
+    }
+
+    .match-card {
+        padding: 35px 15px;
+    }
+
+    .registration {
+        padding: 30px 15px;
+    }
+
+    .ticket {
+        padding: 22px 17px;
+    }
+}
+
 </style>
 
 </head>
 
 <body>
 
-<div class="container">
+<!-- HERO -->
 
-<h1>🎫 جواز الإياب</h1>
+<header class="hero">
 
-<p class="subtitle">
-رحلة جديدة... وموعد جديد مع الانتصار 🇰🇼
-</p>
+    <video autoplay muted loop playsinline>
+        <source src="منتخب الكويت.mp4" type="video/mp4">
+    </video>
 
-<div class="card">
+    <div class="hero-content">
 
-<h2>⚽ مباراة الإياب</h2>
+        <div class="badge">
+            🇰🇼 فعالية جواز الإياب
+        </div>
 
-<div class="match">
-🇰🇼 الكويت × روسيا 🇷🇺
+        <h1>جواز الإياب 🎫</h1>
+
+        <p class="hero-subtitle">
+            رحلة جديدة... مدرج واحد... وحلم واحد 🇰🇼
+        </p>
+
+        <a href="#registration" class="hero-button">
+            🎟️ إصدار جواز الإياب
+        </a>
+
+    </div>
+
+</header>
+
+
+<!-- NEWS BAR -->
+
+<div class="news-bar">
+    <div class="news-inner">
+        🇰🇼 جواز الإياب مفتوح للجمهور — سجّل حضورك الآن 🎫
+        &nbsp;&nbsp;&nbsp; • &nbsp;&nbsp;&nbsp;
+        المدرجات تناديكم 🇰🇼
+        &nbsp;&nbsp;&nbsp; • &nbsp;&nbsp;&nbsp;
+        الكويت × روسيا 🇰🇼🇷🇺
+    </div>
 </div>
 
-<div class="info">
-🕘 9:00 مساءً
-</div>
 
-<input
-    type="text"
-    id="name"
-    placeholder="اكتب اسمك هنا"
-    maxlength="50"
->
+<main class="container">
 
-<br>
 
-<button id="registerButton" onclick="registerAttendance()">
-🎟️ سجّل حضورك
-</button>
+<!-- MATCH -->
 
-<div id="status">
-لم تسجل أي حضور حتى الآن.
-</div>
+<section>
 
-<div id="counter">
-👥 عدد المسجلين: ...
-</div>
+    <div class="section-title">
+        ⚽ المواجهة
+    </div>
 
-<div class="ticket">
+    <p class="section-description">
+        صفحة المباراة الرسمية لجواز الإياب
+    </p>
 
-<div class="ticket-top">
-<span>🇰🇼</span>
-<strong>جواز الإياب</strong>
-<span>🎫</span>
-</div>
+    <div class="match-card">
 
-<div class="ticket-line"></div>
+        <div class="match-label">
+            MATCH DAY
+        </div>
 
-<h2>🏆 تذكرتك</h2>
+        <div class="teams">
 
-<p class="ticket-match">
-الكويت 🇰🇼 × روسيا 🇷🇺
-</p>
+            <div class="team">
+                🇰🇼 الكويت
+            </div>
 
-<p>🕘 9:00 مساءً</p>
+            <div class="vs">
+                ×
+            </div>
 
-<p class="ticket-note">
-نتمنى لك تجربة لا تُنسى ❤️
-</p>
+            <div class="team">
+                روسيا 🇷🇺
+            </div>
 
-</div>
+        </div>
 
-</div>
+        <div class="match-note">
+            🏟️ الموعد سيتم الإعلان عنه لاحقًا
+        </div>
 
-</div>
+    </div>
+
+</section>
+
+
+<!-- REGISTRATION -->
+
+<section id="registration">
+
+    <div class="registration">
+
+        <h2>
+            🎫 أصدر جواز الإياب
+        </h2>
+
+        <p>
+            اكتب اسمك وانضم إلى جمهور الإياب 🇰🇼
+        </p>
+
+        <input
+            type="text"
+            id="name"
+            placeholder="اكتب اسمك هنا"
+            maxlength="50"
+        >
+
+        <button
+            id="registerButton"
+            class="register-button"
+            onclick="registerAttendance()"
+        >
+            🎟️ إصدار جواز الإياب
+        </button>
+
+        <div id="status">
+            لم تسجل أي حضور حتى الآن.
+        </div>
+
+        <div id="counter">
+            👥 عدد المسجلين: ...
+        </div>
+
+    </div>
+
+
+    <!-- TICKET -->
+
+    <div id="ticket" class="ticket">
+
+        <div class="ticket-top">
+
+            <span>🇰🇼</span>
+
+            <strong>
+                جواز الإياب
+            </strong>
+
+            <span>🎫</span>
+
+        </div>
+
+        <div class="ticket-line"></div>
+
+        <div class="ticket-title">
+            تم إصدار جوازك
+        </div>
+
+        <div id="ticketName" class="ticket-name">
+        </div>
+
+        <div class="ticket-line"></div>
+
+        <div class="ticket-match">
+            الكويت 🇰🇼 × روسيا 🇷🇺
+        </div>
+
+        <p class="ticket-note">
+            جواز حضورك إلى الإياب ❤️
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- MEDIA -->
+
+<section>
+
+    <div class="section-title">
+        📰 المركز الإعلامي
+    </div>
+
+    <p class="section-description">
+        هنا تبدأ الحكاية... وهنا يكتب الجمهور فصل الإياب.
+    </p>
+
+</section>
+
+
+</main>
+
+
+<footer>
+    🇰🇼 جواز الإياب — معًا نحو الإياب
+</footer>
 
 
 <script type="module">
@@ -223,6 +596,8 @@ import {
 "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
 
 
+/* ===== FIREBASE ===== */
+
 const firebaseConfig = {
     apiKey: "AIzaSyAXCJeK9_FAd6lR0ctfdm_kcaVI-ys52dw",
     authDomain: "return-ticket.firebaseapp.com",
@@ -238,6 +613,8 @@ const app = initializeApp(firebaseConfig);
 
 const db = getFirestore(app);
 
+
+/* ===== COUNTER ===== */
 
 async function updateCounter() {
 
@@ -262,6 +639,8 @@ async function updateCounter() {
     }
 }
 
+
+/* ===== REGISTRATION ===== */
 
 window.registerAttendance = async function() {
 
@@ -290,7 +669,7 @@ window.registerAttendance = async function() {
     button.disabled = true;
 
     status.innerHTML =
-        "⏳ جارٍ تسجيل حضورك...";
+        "⏳ جارٍ إصدار جوازك...";
 
 
     try {
@@ -305,10 +684,15 @@ window.registerAttendance = async function() {
 
 
         status.innerHTML =
-            "✅ تم تسجيل حضورك يا " +
+            "✅ تم إصدار جواز الإياب يا " +
             name +
             "!<br>🇰🇼 ننتظرك في المدرجات!";
 
+
+        document.getElementById("ticketName").innerText =
+            name;
+
+        document.getElementById("ticket").classList.add("show");
 
         nameInput.value = "";
 
@@ -320,19 +704,23 @@ window.registerAttendance = async function() {
         console.error(error);
 
         status.innerHTML =
-            "❌ ما قدرنا نسجل حضورك الآن.<br>حاولي مرة ثانية.";
+            "❌ ما قدرنا نصدر جوازك الآن.<br>حاولي مرة ثانية.";
 
     } finally {
 
         button.disabled = false;
     }
+
 };
 
+
+/* ===== START COUNTER ===== */
 
 updateCounter();
 
 </script>
 
 </body>
+
 </html>
 ```
