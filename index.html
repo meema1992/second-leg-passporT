@@ -22,8 +22,8 @@ body {
     margin: 0;
     font-family: Arial, Tahoma, sans-serif;
     background:
-        radial-gradient(circle at 50% 0%, #17456d 0%, transparent 35%),
-        linear-gradient(145deg, #020812, #061936 48%, #032f38);
+        radial-gradient(circle at top, #163d68 0%, transparent 35%),
+        linear-gradient(145deg, #020812, #071952 50%, #031f2d);
     color: white;
     text-align: center;
     min-height: 100vh;
@@ -52,17 +52,16 @@ body {
     object-fit: cover;
 }
 
-.hero::before {
+.hero::after {
     content: "";
     position: absolute;
     inset: 0;
-    z-index: 1;
     background:
         linear-gradient(
             180deg,
-            rgba(0,0,0,0.05) 0%,
-            rgba(0,0,0,0.25) 45%,
-            rgba(2,8,18,0.95) 100%
+            rgba(0,0,0,0.05),
+            rgba(0,0,0,0.30) 45%,
+            rgba(2,8,18,0.95)
         );
 }
 
@@ -70,7 +69,6 @@ body {
     position: relative;
     z-index: 2;
     width: min(900px, 90%);
-    padding-top: 40px;
     animation: fadeUp 1s ease;
 }
 
@@ -90,73 +88,65 @@ body {
     font-size: clamp(55px, 10vw, 115px);
     font-weight: 900;
     letter-spacing: -4px;
-    text-shadow:
-        0 8px 20px rgba(0,0,0,0.8),
-        0 20px 60px rgba(0,0,0,0.6);
+    text-shadow: 0 10px 40px rgba(0,0,0,0.8);
 }
 
 .hero-subtitle {
     margin: 18px auto 32px;
     font-size: clamp(18px, 3vw, 28px);
     font-weight: 600;
-    text-shadow: 0 4px 15px rgba(0,0,0,0.7);
 }
 
 .hero-button {
     display: inline-block;
     padding: 17px 35px;
     border-radius: 18px;
-    background: white;
+    background: #d4af37;
     color: #071952;
     text-decoration: none;
     font-size: 19px;
     font-weight: 900;
-    box-shadow: 0 15px 45px rgba(0,0,0,0.4);
-    transition: 0.3s ease;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.45);
+    transition: 0.3s;
 }
 
 .hero-button:hover {
     transform: translateY(-4px) scale(1.04);
 }
 
-/* ================= NEWS BAR ================= */
+/* ================= NEWS ================= */
 
 .news-bar {
-    position: relative;
-    z-index: 5;
     overflow: hidden;
     background: #020812;
-    border-top: 1px solid rgba(255,255,255,0.10);
-    border-bottom: 1px solid rgba(255,255,255,0.10);
+    border-top: 1px solid rgba(212,175,55,0.25);
+    border-bottom: 1px solid rgba(212,175,55,0.25);
 }
 
 .news-inner {
-    padding: 15px 0;
+    padding: 15px;
     white-space: nowrap;
+    color: #e5c65a;
     font-size: 15px;
     font-weight: bold;
     animation: newsMove 18s linear infinite;
 }
 
-/* ================= CONTAINER ================= */
+/* ================= MAIN ================= */
 
 .container {
-    width: min(1100px, 92%);
+    width: min(1050px, 92%);
     margin: auto;
 }
 
 section {
-    padding: 80px 0;
-}
-
-.section-heading {
-    margin-bottom: 35px;
+    padding: 75px 0;
 }
 
 .section-kicker {
-    color: rgba(255,255,255,0.55);
+    color: #d4af37;
     font-size: 13px;
-    letter-spacing: 3px;
+    letter-spacing: 4px;
     margin-bottom: 10px;
 }
 
@@ -167,12 +157,11 @@ section {
 }
 
 .section-description {
-    margin-top: 12px;
     color: rgba(255,255,255,0.65);
     font-size: 17px;
 }
 
-/* ================= MATCH CARD ================= */
+/* ================= MATCH ================= */
 
 .match-card {
     position: relative;
@@ -182,28 +171,16 @@ section {
     background:
         linear-gradient(
             135deg,
-            rgba(255,255,255,0.14),
-            rgba(255,255,255,0.035)
+            rgba(255,255,255,0.10),
+            rgba(255,255,255,0.025)
         );
-    border: 1px solid rgba(255,255,255,0.16);
-    box-shadow:
-        0 30px 80px rgba(0,0,0,0.38),
-        inset 0 1px 0 rgba(255,255,255,0.10);
+    border: 1px solid rgba(212,175,55,0.28);
+    box-shadow: 0 30px 80px rgba(0,0,0,0.38);
     backdrop-filter: blur(18px);
 }
 
-.match-card::before {
-    content: "RETURN LEG";
-    position: absolute;
-    top: 20px;
-    left: 25px;
-    font-size: 11px;
-    letter-spacing: 4px;
-    opacity: 0.25;
-}
-
 .match-label {
-    color: rgba(255,255,255,0.55);
+    color: #d4af37;
     font-size: 13px;
     letter-spacing: 4px;
 }
@@ -219,7 +196,6 @@ section {
 .team {
     font-size: clamp(30px, 5vw, 58px);
     font-weight: 900;
-    white-space: nowrap;
 }
 
 .vs {
@@ -229,31 +205,22 @@ section {
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(255,255,255,0.18);
-    font-size: 21px;
+    border: 1px solid rgba(212,175,55,0.55);
+    color: #d4af37;
     font-weight: bold;
 }
 
 .match-note {
     color: rgba(255,255,255,0.55);
-    font-size: 15px;
 }
 
 /* ================= REGISTRATION ================= */
 
 .registration {
-    position: relative;
-    padding: 55px 25px;
+    padding: 50px 25px;
     border-radius: 35px;
-    background:
-        radial-gradient(
-            circle at top,
-            rgba(255,255,255,0.12),
-            transparent 55%
-        ),
-        rgba(0,0,0,0.24);
-    border: 1px solid rgba(255,255,255,0.12);
+    background: rgba(0,0,0,0.25);
+    border: 1px solid rgba(212,175,55,0.20);
     box-shadow: 0 30px 80px rgba(0,0,0,0.3);
 }
 
@@ -264,11 +231,6 @@ section {
 
 .registration p {
     color: rgba(255,255,255,0.7);
-    font-size: 17px;
-}
-
-.input-wrap {
-    margin-top: 28px;
 }
 
 input {
@@ -279,26 +241,25 @@ input {
     border-radius: 16px;
     font-size: 17px;
     text-align: center;
-    transition: 0.3s;
+    margin-top: 20px;
 }
 
 input:focus {
-    border-color: #0b666a;
+    border-color: #d4af37;
 }
 
 .register-button {
     display: block;
-    margin: 18px auto 0;
+    margin: 18px auto;
     padding: 17px 35px;
     border: none;
     border-radius: 16px;
-    background: white;
+    background: #d4af37;
     color: #071952;
     font-size: 18px;
     font-weight: 900;
     cursor: pointer;
     transition: 0.3s;
-    box-shadow: 0 10px 35px rgba(0,0,0,0.3);
 }
 
 .register-button:hover {
@@ -319,11 +280,12 @@ input:focus {
 
 #counter {
     display: inline-block;
-    margin-top: 18px;
-    padding: 11px 20px;
+    margin-top: 15px;
+    padding: 11px 22px;
     border-radius: 100px;
-    background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(255,255,255,0.12);
+    background: rgba(212,175,55,0.10);
+    border: 1px solid rgba(212,175,55,0.30);
+    color: #e5c65a;
     font-size: 18px;
     font-weight: bold;
 }
@@ -333,75 +295,125 @@ input:focus {
 .ticket {
     display: none;
     position: relative;
-    overflow: hidden;
-    max-width: 700px;
-    margin: 40px auto 0;
-    padding: 34px;
-    color: #071952;
-    background:
-        linear-gradient(135deg, #ffffff, #e9f1f4);
-    border-radius: 28px;
+    max-width: 720px;
+    margin: 45px auto 0;
+    padding: 8px;
+    border-radius: 30px;
+    background: linear-gradient(
+        135deg,
+        #f1d36a,
+        #a77b16,
+        #f4d96b,
+        #9b7115
+    );
     box-shadow:
-        0 30px 70px rgba(0,0,0,0.45);
-    animation: ticketIn 0.7s ease;
+        0 30px 90px rgba(0,0,0,0.55),
+        0 0 35px rgba(212,175,55,0.20);
+    animation: passportIn 0.8s ease;
 }
 
 .ticket.show {
     display: block;
 }
 
-.ticket::before,
-.ticket::after {
-    content: "";
+.ticket-inner {
+    position: relative;
+    overflow: hidden;
+    padding: 38px 30px;
+    border-radius: 23px;
+    background:
+        radial-gradient(
+            circle at top left,
+            rgba(255,255,255,0.08),
+            transparent 35%
+        ),
+        linear-gradient(145deg, #071a3b, #020b1b);
+    border: 1px solid rgba(255,255,255,0.12);
+}
+
+.ticket-inner::before {
+    content: "🇰🇼";
     position: absolute;
-    width: 35px;
-    height: 35px;
-    border-radius: 50%;
-    background: #061936;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-.ticket::before {
-    right: -18px;
-}
-
-.ticket::after {
-    left: -18px;
+    left: -20px;
+    bottom: -45px;
+    font-size: 170px;
+    opacity: 0.035;
 }
 
 .ticket-top {
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    font-size: 24px;
+    align-items: center;
+    color: #e6c65c;
+    font-size: 25px;
+    position: relative;
+    z-index: 1;
+}
+
+.ticket-small {
+    color: rgba(255,255,255,0.55);
+    font-size: 11px;
+    letter-spacing: 3px;
+    margin-top: 25px;
 }
 
 .ticket-title {
-    margin: 25px 0 5px;
-    font-size: 32px;
+    margin: 8px 0;
+    color: #f0cf55;
+    font-size: clamp(32px, 7vw, 52px);
     font-weight: 900;
+}
+
+.ticket-subtitle {
+    color: rgba(255,255,255,0.65);
+    margin-bottom: 25px;
+}
+
+.ticket-name-label {
+    color: rgba(255,255,255,0.55);
+    font-size: 13px;
 }
 
 .ticket-name {
-    font-size: 29px;
+    margin: 8px 0 28px;
+    color: #ffffff;
+    font-size: clamp(28px, 6vw, 40px);
     font-weight: 900;
-    margin: 10px 0 25px;
 }
 
 .ticket-line {
-    border-top: 2px dashed rgba(7,25,82,0.25);
+    height: 1px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(212,175,55,0.8),
+        transparent
+    );
     margin: 25px 0;
 }
 
 .ticket-match {
-    font-size: 24px;
+    color: #ffffff;
+    font-size: clamp(22px, 5vw, 30px);
     font-weight: 900;
 }
 
-.ticket-note {
-    margin-bottom: 0;
-    color: rgba(7,25,82,0.60);
+.ticket-status {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 9px 18px;
+    border-radius: 100px;
+    color: #071952;
+    background: #d4af37;
+    font-size: 14px;
+    font-weight: 900;
+}
+
+.ticket-number {
+    margin-top: 25px;
+    color: rgba(255,255,255,0.5);
+    font-size: 12px;
+    letter-spacing: 2px;
 }
 
 /* ================= MEDIA ================= */
@@ -409,27 +421,26 @@ input:focus {
 .media-box {
     padding: 40px 25px;
     border-radius: 30px;
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.10);
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(212,175,55,0.16);
 }
 
 .media-box h3 {
-    margin-top: 0;
-    font-size: 25px;
+    color: #d4af37;
+    font-size: 26px;
 }
 
 .media-box p {
     color: rgba(255,255,255,0.65);
-    line-height: 1.9;
+    line-height: 2;
 }
 
 /* ================= FOOTER ================= */
 
 footer {
     padding: 45px 20px;
-    border-top: 1px solid rgba(255,255,255,0.08);
-    color: rgba(255,255,255,0.5);
-    font-size: 14px;
+    border-top: 1px solid rgba(212,175,55,0.15);
+    color: rgba(255,255,255,0.45);
 }
 
 /* ================= ANIMATIONS ================= */
@@ -448,11 +459,11 @@ footer {
 
 }
 
-@keyframes ticketIn {
+@keyframes passportIn {
 
     from {
         opacity: 0;
-        transform: translateY(30px) scale(0.97);
+        transform: translateY(35px) scale(0.94);
     }
 
     to {
@@ -485,34 +496,20 @@ footer {
 
     .hero h1 {
         font-size: clamp(48px, 14vw, 75px);
-        letter-spacing: -3px;
-    }
-
-    .hero-subtitle {
-        font-size: 17px;
-    }
-
-    .hero-button {
-        padding: 14px 25px;
-        font-size: 16px;
-    }
-
-    section {
-        padding: 60px 0;
     }
 
     .teams {
+        flex-direction: column;
         gap: 15px;
     }
 
     .team {
-        font-size: 28px;
+        font-size: 30px;
     }
 
     .vs {
         width: 52px;
         height: 52px;
-        font-size: 17px;
     }
 
     .match-card {
@@ -523,8 +520,8 @@ footer {
         padding: 40px 15px;
     }
 
-    .ticket {
-        padding: 28px 20px;
+    .ticket-inner {
+        padding: 30px 20px;
     }
 
 }
@@ -557,7 +554,7 @@ footer {
         </h1>
 
         <p class="hero-subtitle">
-            رحلة جديدة... مدرج واحد... وحلم واحد 🇰🇼
+            رحلة جديدة... مدرج واحد... وحلم واحد
         </p>
 
         <a href="#registration" class="hero-button">
@@ -601,21 +598,17 @@ footer {
 
 <section>
 
-    <div class="section-heading">
-
-        <div class="section-kicker">
-            THE RETURN
-        </div>
-
-        <h2 class="section-title">
-            ⚽ المواجهة
-        </h2>
-
-        <p class="section-description">
-            الإياب... فصل جديد من الحكاية 🇰🇼
-        </p>
-
+    <div class="section-kicker">
+        THE RETURN
     </div>
+
+    <h2 class="section-title">
+        ⚽ المواجهة
+    </h2>
+
+    <p class="section-description">
+        الإياب... فصل جديد من الحكاية 🇰🇼
+    </p>
 
 
     <div class="match-card">
@@ -653,21 +646,17 @@ footer {
 
 <section id="registration">
 
-    <div class="section-heading">
-
-        <div class="section-kicker">
-            YOUR PASS
-        </div>
-
-        <h2 class="section-title">
-            🎫 احجز مكانك في الإياب
-        </h2>
-
-        <p class="section-description">
-            سجّل اسمك وأصدر جواز الإياب الخاص بك
-        </p>
-
+    <div class="section-kicker">
+        YOUR PASS
     </div>
+
+    <h2 class="section-title">
+        🎫 احجز مكانك في الإياب
+    </h2>
+
+    <p class="section-description">
+        سجّل اسمك وأصدر جواز الإياب الخاص بك
+    </p>
 
 
     <div class="registration">
@@ -680,16 +669,13 @@ footer {
             اكتب اسمك وانضم إلى جمهور الإياب 🇰🇼
         </p>
 
-        <div class="input-wrap">
 
-            <input
-                type="text"
-                id="name"
-                placeholder="اكتب اسمك هنا"
-                maxlength="50"
-            >
-
-        </div>
+        <input
+            type="text"
+            id="name"
+            placeholder="اكتب اسمك هنا"
+            maxlength="50"
+        >
 
 
         <button
@@ -713,46 +699,70 @@ footer {
     </div>
 
 
-    <!-- PASSPORT -->
+    <!-- ================= PASSPORT ================= -->
 
     <div id="ticket" class="ticket">
 
-        <div class="ticket-top">
+        <div class="ticket-inner">
 
-            <span>🇰🇼</span>
+            <div class="ticket-top">
 
-            <strong>
+                <span>🇰🇼</span>
+
+                <strong>
+                    جواز الإياب
+                </strong>
+
+                <span>🎫</span>
+
+            </div>
+
+
+            <div class="ticket-small">
+                RETURN PASS • 2026
+            </div>
+
+
+            <div class="ticket-title">
                 جواز الإياب
-            </strong>
+            </div>
 
-            <span>🎫</span>
+
+            <div class="ticket-subtitle">
+                تم اعتماد حضورك رسميًا
+            </div>
+
+
+            <div class="ticket-line"></div>
+
+
+            <div class="ticket-name-label">
+                حامل الجواز
+            </div>
+
+
+            <div id="ticketName" class="ticket-name">
+            </div>
+
+
+            <div class="ticket-line"></div>
+
+
+            <div class="ticket-match">
+                الكويت 🇰🇼 × روسيا 🇷🇺
+            </div>
+
+
+            <div class="ticket-status">
+                ✓ حضور معتمد
+            </div>
+
+
+            <div id="ticketNumber" class="ticket-number">
+                RETURN PASS
+            </div>
 
         </div>
-
-
-        <div class="ticket-line"></div>
-
-
-        <div class="ticket-title">
-            تم إصدار جوازك
-        </div>
-
-
-        <div id="ticketName" class="ticket-name">
-        </div>
-
-
-        <div class="ticket-line"></div>
-
-
-        <div class="ticket-match">
-            الكويت 🇰🇼 × روسيا 🇷🇺
-        </div>
-
-
-        <p class="ticket-note">
-            جواز حضورك إلى الإياب ❤️
-        </p>
 
     </div>
 
@@ -763,17 +773,13 @@ footer {
 
 <section>
 
-    <div class="section-heading">
-
-        <div class="section-kicker">
-            MEDIA CENTER
-        </div>
-
-        <h2 class="section-title">
-            📰 المركز الإعلامي
-        </h2>
-
+    <div class="section-kicker">
+        MEDIA CENTER
     </div>
+
+    <h2 class="section-title">
+        📰 المركز الإعلامي
+    </h2>
 
 
     <div class="media-box">
@@ -783,10 +789,10 @@ footer {
         </h3>
 
         <p>
-            هنا تبدأ رحلة الإياب، وهنا يجتمع الجمهور على موعد
-            مع ليلة جديدة من الحماس والانتماء.
+            هنا تبدأ رحلة الإياب، وهنا يجتمع الجمهور
+            على موعد مع ليلة جديدة من الحماس والانتماء.
             <br>
-            🇰🇼 كل مقعد في المدرجات... جواز جديد في الحكاية.
+            🇰🇼 كل اسم يُسجّل... فصل جديد في الحكاية.
         </p>
 
     </div>
@@ -808,6 +814,8 @@ footer {
 </footer>
 
 
+<!-- ================= FIREBASE ================= -->
+
 <script type="module">
 
 import { initializeApp } from
@@ -822,8 +830,6 @@ import {
 } from
 "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
 
-
-/* ================= FIREBASE ================= */
 
 const firebaseConfig = {
 
@@ -933,6 +939,26 @@ window.registerAttendance = async function() {
             name;
 
 
+        /*
+         * رقم الجواز يعتمد على العدد الحالي
+         */
+
+        const countSnapshot =
+            await getCountFromServer(
+                collection(db, "participants")
+            );
+
+
+        const passportNumber =
+            String(countSnapshot.data().count)
+                .padStart(4, "0");
+
+
+        document.getElementById("ticketNumber").innerText =
+            "RETURN PASS • RT-" +
+            passportNumber;
+
+
         document.getElementById("ticket")
             .classList.add("show");
 
@@ -941,6 +967,7 @@ window.registerAttendance = async function() {
 
 
         await updateCounter();
+
 
     }
 
