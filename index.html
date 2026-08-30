@@ -26,8 +26,6 @@ body {
     overflow-x: hidden;
 }
 
-/* HERO */
-
 .hero {
     position: relative;
     width: 100%;
@@ -102,8 +100,6 @@ body {
     font-weight: 900;
 }
 
-/* NEWS */
-
 .news-bar {
     overflow: hidden;
     background: #020812;
@@ -145,8 +141,6 @@ section {
     color: rgba(255,255,255,0.65);
     font-size: 17px;
 }
-
-/* MATCH */
 
 .match-card {
     padding: 55px 30px;
@@ -196,7 +190,25 @@ section {
     color: rgba(255,255,255,0.55);
 }
 
-/* REGISTRATION */
+.match-date {
+    margin-top: 30px;
+    padding: 18px;
+    border-radius: 18px;
+    background: rgba(212,175,55,0.10);
+    border: 1px solid rgba(212,175,55,0.30);
+}
+
+.match-date .date {
+    color: #e8c657;
+    font-size: 22px;
+    font-weight: 900;
+}
+
+.match-date .time {
+    margin-top: 8px;
+    font-size: 18px;
+    color: white;
+}
 
 .registration {
     padding: 50px 25px;
@@ -225,6 +237,10 @@ input {
     margin-top: 20px;
 }
 
+input:focus {
+    border-color: #d4af37;
+}
+
 .register-button {
     display: block;
     margin: 18px auto;
@@ -236,6 +252,10 @@ input {
     font-size: 18px;
     font-weight: 900;
     cursor: pointer;
+}
+
+.register-button:disabled {
+    opacity: 0.6;
 }
 
 #status {
@@ -256,8 +276,6 @@ input {
     font-size: 18px;
     font-weight: bold;
 }
-
-/* MEDIA */
 
 .media-box {
     padding: 40px 25px;
@@ -283,7 +301,7 @@ footer {
 }
 
 
-/* ================= التذكرة ================= */
+/* التذكرة */
 
 .passport-overlay {
     display: none;
@@ -426,6 +444,13 @@ footer {
     font-weight: 900;
 }
 
+.passport-date {
+    margin-top: 15px;
+    color: #e8c657;
+    font-size: 17px;
+    font-weight: bold;
+}
+
 .passport-approved {
     display: inline-block;
     margin-top: 25px;
@@ -464,9 +489,6 @@ footer {
     font-size: 13px;
     line-height: 1.7;
 }
-
-
-/* MOBILE */
 
 @media (max-width: 650px) {
 
@@ -545,7 +567,7 @@ footer {
 
     <div class="news-inner">
 
-        🇰🇼 جواز الإياب مفتوح للجمهور — سجّل حضورك الآن 🎫
+        🇰🇼 الموعد الرسمي: الأربعاء 2 سبتمبر — 12:00 صباحًا 🎫
         &nbsp; • &nbsp;
         المدرجات تناديكم 🇰🇼
         &nbsp; • &nbsp;
@@ -597,9 +619,19 @@ footer {
 
         </div>
 
-        <div class="match-note">
-            🎫 تفاصيل المباراة سيتم الإعلان عنها لاحقًا
+
+        <div class="match-date">
+
+            <div class="date">
+                📅 الأربعاء 2 سبتمبر
+            </div>
+
+            <div class="time">
+                🕛 12:00 صباحًا
+            </div>
+
         </div>
+
 
     </div>
 
@@ -675,6 +707,10 @@ footer {
         </h3>
 
         <p>
+            الأربعاء 2 سبتمبر...
+            <br>
+            الساعة 12:00 صباحًا...
+            <br><br>
             هنا تبدأ رحلة الإياب، وهنا يجتمع الجمهور
             على موعد مع ليلة جديدة من الحماس والانتماء.
             <br>
@@ -693,12 +729,14 @@ footer {
 
     🇰🇼 جواز الإياب
     <br><br>
+    الأربعاء 2 سبتمبر • 12:00 صباحًا
+    <br><br>
     معًا نحو الإياب ❤️
 
 </footer>
 
 
-<!-- ================= التذكرة ================= -->
+<!-- التذكرة -->
 
 <div
     id="passportOverlay"
@@ -762,6 +800,10 @@ footer {
                     الكويت 🇰🇼 × روسيا 🇷🇺
                 </div>
 
+                <div class="passport-date">
+                    الأربعاء 2 سبتمبر • 12:00 صباحًا
+                </div>
+
                 <div class="passport-approved">
                     ✓ حضور معتمد
                 </div>
@@ -791,8 +833,6 @@ footer {
 
 </div>
 
-
-<!-- ================= FIREBASE ================= -->
 
 <script type="module">
 
@@ -1011,7 +1051,7 @@ async function() {
 };
 
 
-/* إغلاق التذكرة */
+/* إغلاق */
 
 window.closePassport =
 function() {
@@ -1025,21 +1065,21 @@ function() {
 };
 
 
-/* حفظ التذكرة */
+/* حفظ */
 
 window.saveTicket =
 function() {
 
-    const card =
-        document.getElementById(
-            "passportCard"
-        );
+    const name =
+        document
+            .getElementById("ticketName")
+            .innerText;
 
-    /*
-       نفتح التذكرة في نافذة جديدة.
-       من الجوال يمكن الضغط عليها مطولًا
-       وحفظها كصورة.
-    */
+    const number =
+        document
+            .getElementById("ticketNumber")
+            .innerText;
+
 
     const newWindow =
         window.open(
@@ -1060,7 +1100,7 @@ function() {
 
 
     newWindow.document.write(`
-    
+
         <!DOCTYPE html>
 
         <html lang="ar" dir="rtl">
@@ -1094,7 +1134,10 @@ function() {
 
                     background: #020812;
 
-                    font-family: Arial, Tahoma, sans-serif;
+                    font-family:
+                    Arial,
+                    Tahoma,
+                    sans-serif;
 
                 }
 
@@ -1115,9 +1158,6 @@ function() {
                         #8c6510,
                         #e8c34f
                     );
-
-                    box-shadow:
-                    0 30px 80px rgba(0,0,0,0.7);
 
                 }
 
@@ -1221,6 +1261,18 @@ function() {
 
                 }
 
+                .date {
+
+                    margin-top: 15px;
+
+                    color: #e8c657;
+
+                    font-size: 17px;
+
+                    font-weight: bold;
+
+                }
+
                 .approved {
 
                     display: inline-block;
@@ -1293,9 +1345,7 @@ function() {
                     </div>
 
                     <div class="name">
-                        ${document
-                            .getElementById("ticketName")
-                            .innerText}
+                        ${name}
                     </div>
 
                     <div class="line"></div>
@@ -1304,14 +1354,16 @@ function() {
                         الكويت 🇰🇼 × روسيا 🇷🇺
                     </div>
 
+                    <div class="date">
+                        الأربعاء 2 سبتمبر • 12:00 صباحًا
+                    </div>
+
                     <div class="approved">
                         ✓ حضور معتمد
                     </div>
 
                     <div class="number">
-                        ${document
-                            .getElementById("ticketNumber")
-                            .innerText}
+                        ${number}
                     </div>
 
                 </div>
